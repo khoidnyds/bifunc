@@ -1,0 +1,11 @@
+/data
+/results
+/log
+/database
+/test
+/visual
+.vscode
+.ipynb_checkpoints
+__pycache__
+run.sh
+explore.ipynb
