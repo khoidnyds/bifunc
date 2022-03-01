@@ -6,12 +6,10 @@ import numpy as np
 
 
 class Visualization():
-    def __init__(self, query, clusters, out, annotation):
+    def __init__(self, query, clusters, annotation):
         self.annontation = annotation
         self.query = query
         self.clusters = clusters
-        self.out = Path(out)
-        Path.mkdir(self.out, parents=True, exist_ok=True)
 
     def generate_graph(self):
         name = None
@@ -23,6 +21,9 @@ class Visualization():
             return
         logging.info(
             f"Drawing {df['Cluster'].iloc[-1]} clusters")
+
+        out_path = self.query.parent.joinpath("viz")
+        Path.mkdir(out_path, parents=True, exist_ok=True)
 
         for cluster_idx, cluster in df.groupby("Cluster"):
             length = cluster['Length'].iloc[0]
@@ -55,6 +56,6 @@ class Visualization():
                     f"Target location: {target_start} {target_end}\nQuery location: {x_start} {x_end}\n{label}")
                 plt.plot((x_start, x_end), (y, y))
             plt.yticks(locs, labels)
-            plt.savefig(self.out.joinpath(
+            plt.savefig(out_path.joinpath(
                 f"cluster_{cluster_idx}.png"), bbox_inches='tight')
             plt.close()

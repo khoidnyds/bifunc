@@ -3,24 +3,24 @@ import numpy as np
 from pyfaidx import Fasta
 import logging
 from tqdm import tqdm
+from pathlib import Path
 
 
 class Clustering():
-    def __init__(self, query, alignment, distance, out):
+    def __init__(self, query, alignment, distance):
         self.alignment_path = alignment
         self.query_path = query
         self.distance = distance
-        self.out = out
 
     def cluster(self):
         labels = ["Query accession", "Target accession", "Sequence identity", "Length", "Mismatches",
                   "Gap openings", "Query start", "Query end", "Target start", "Target end", "E-value", "Bit score"]
-        query = Fasta(self.query_path)
+        query = Fasta(str(self.query_path))
         aligned = pd.read_csv(self.alignment_path, sep='\t', names=labels)
 
         groups = aligned.groupby("Query accession")
         results = pd.DataFrame(columns=["Cluster", "Query accession", "Length",
-                                             "Query start", "Query end", "Target accession", "Target start", "Target end"])
+                                        "Query start", "Query end", "Target accession", "Target start", "Target end"])
         # iterate through read
         logging.info(f'Set distance of {self.distance}, find clusters')
         num_cluster = 1
@@ -64,8 +64,8 @@ class Clustering():
                         if(start > end_cluster + self.distance):
                             cluster = cluster.sort_values("Range").drop_duplicates(
                                 "Target accession", keep="first")
-                            cluster = cluster.drop_duplicates(["Query start", "Query end"], keep="first")
-                            
+                            cluster = cluster.drop_duplicates(
+                                ["Query start", "Query end"], keep="first")
 
                             if cluster.shape[0] > 1:
                                 results = pd.concat(
@@ -88,15 +88,15 @@ class Clustering():
                         if start > (start_cluster+(end_cluster-start_cluster)*0.9):
                             # add seq to cluster and expand the range of cluster
                             cluster.loc[cluster.shape[0]] = [num_cluster,
-                                                            seq[1]["Query accession"],
-                                                            len(str(
-                                                                query[seq[1]["Query accession"]])),
-                                                            seq[1]["Start"],
-                                                            seq[1]["End"],
-                                                            seq[1]["Target accession"],
-                                                            seq[1]["Target start"],
-                                                            seq[1]["Target end"],
-                                                            seq[1]["Start"]-seq[1]["End"]]
+                                                             seq[1]["Query accession"],
+                                                             len(str(
+                                                                 query[seq[1]["Query accession"]])),
+                                                             seq[1]["Start"],
+                                                             seq[1]["End"],
+                                                             seq[1]["Target accession"],
+                                                             seq[1]["Target start"],
+                                                             seq[1]["Target end"],
+                                                             seq[1]["Start"]-seq[1]["End"]]
                             start_cluster = start if start < start_cluster else start_cluster
                             end_cluster = end if end > end_cluster else end_cluster
 
@@ -104,7 +104,8 @@ class Clustering():
                         if(seq[0] == group.shape[0]-1):
                             cluster = cluster.sort_values("Range").drop_duplicates(
                                 "Target accession", keep="first")
-                            cluster = cluster.drop_duplicates(["Query start", "Query end"], keep="first")
+                            cluster = cluster.drop_duplicates(
+                                ["Query start", "Query end"], keep="first")
                             if cluster.shape[0] > 1:
                                 results = pd.concat(
                                     [results, cluster])
@@ -114,7 +115,11 @@ class Clustering():
         if results.empty:
             raise Exception("No clusters found")
         logging.info(
-                f"Found {results['Cluster'].iloc[-1]} clusters")
-        results.to_csv(self.out, index=False)
+            f"Found {results['Cluster'].iloc[-1]} clusters")
+
+        out_path = self.query_path.parent.joinpath("clusters.csv")
+        results.to_csv(out_path, index=False)
+        return out_path
 
 
+Clustering(Path("results/ILLUMINA_LANE_1/02-28--09-38-32/orfs.fa"), Path("results/ILLUMINA_LANE_1/02-28--09-38-32/aligned.tsv"), 20).cluster()

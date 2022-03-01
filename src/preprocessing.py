@@ -10,10 +10,49 @@ class Preprocess():
         self.output = output
 
     def execute(self):
-        logging.info(f"Run the QC steps: remove adapter and bad read")
-        subprocess.run(
-            ["orfipy", self.query, "--dna", "orfs.fa", "--outdir", self.out])
-        count = len(Fasta(f"{self.out}/orfs.fa"))
-        logging.info(f"Found {count} ORFs")
-        if count == 0:
-            raise Exception("No ORFs")
+        reference = '/beegfs/projects/ciwars/databases/contaminants_database/merged_ref_5081444234059102403.fa.gz'
+
+        logging.info(
+            f"Run the QC steps: remove adapters and low-quality reads")
+
+        files = sorted([x for x in self.input_dir.glob(
+            '*') if x.is_file() and ".fastq" in x.suffixes])
+
+        if len(files) % 2 != 0:
+            raise Exception("Miss pair-end files")
+
+        pairs = zip(files[::2], files[1::2])
+
+        pairs_1 = []
+        pairs_2 = []
+        count=0
+        for pair in pairs:
+            if count==2:
+                break
+            out_f_1 = self.output.joinpath(
+                Path(f"fastp_{pair[0].name}"))
+            out_f_2 = self.output.joinpath(
+                Path(f"fastp_{pair[1].name}"))
+            out_b_1 = self.output.joinpath(
+                Path(f"bbduk_{pair[0].name}"))
+            out_b_2 = self.output.joinpath(
+                Path(f"bbduk_{pair[1].name}"))
+
+            # fastp: remove adapter and read with quality score < 10
+            logging.info(f"Fastp of {pair[0]} and {pair[1]}")
+            subprocess.run(
+                ["fastp", "-i", pair[0], "-I", pair[1],  "-o", out_f_1, "-O", out_f_2, "--average_qual", "10"])
+            # bbduk
+            # subprocess.run(
+            #     f"bbduk.sh ref={reference} in={out_f_1} in2={out_f_2} out={out_b_1} out2={out_b_2} -Xmx100g")
+
+            pairs_1.append(str(out_f_1))
+            pairs_2.append(str(out_f_2))
+            count+=1
+        subprocess.run(["megahit", "-1", ",".join(pairs_1), "-2",
+                        ",".join(pairs_2), "--presets", "meta-large", "-o", str(self.output.joinpath("megahit"))])
+
+        out_path = self.output.joinpath("megahit").joinpath("final.contigs.fa")
+        count = len(Fasta(str(out_path)))
+        logging.info(f"Found {count} contigs")
+        return out_path

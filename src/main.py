@@ -19,25 +19,18 @@ class Bifunc():
     """
 
     def __init__(self, input_dir, database, annotation, subject_cover, distance):
-        self.input = input_dir
-
-        query = Preprocess.execute(input_dir)
-        self.query = Path(query)
-        self.database = database
+        self.input = Path(input_dir)
+        self.database = Path(database)
         self.distance = distance
         self.annotation = annotation
         self.subject_cover = subject_cover
 
-        out_dir = Path("results")\
-            .joinpath(self.query.stem)\
+        self.out_dir = Path("results")\
+            .joinpath(self.input.stem)\
             .joinpath(datetime.today().strftime("%m-%d--%H-%M-%S"))
-        Path.mkdir(out_dir, parents=True, exist_ok=True)
+        Path.mkdir(self.out_dir, parents=True, exist_ok=True)
 
         start = time.time()
-        self.out_alignment = out_dir.joinpath("aligned.tsv")
-        self.out_clustering = out_dir.joinpath("clusters.csv")
-        self.out_visualization = out_dir.joinpath("viz")
-        self.out_orf = out_dir
         self.pipeline()
 
         running_time = time.time() - start
@@ -45,19 +38,12 @@ class Bifunc():
             f"Total running time: {int(running_time//60)}:{int(running_time%60):0>2d}\n")
 
     def pipeline(self):
-        query = Fasta(str(self.query))
-        logging.info(f"Querry file has {len(query)} reads")
         try:
-            OrfFinder(str(self.query), str(self.out_orf)).orf_finder()
-            orf = self.out_orf.joinpath("orfs.fa")
-            Alignment(str(orf), self.database, self.subject_cover,
-                      self.out_alignment).align()
-
-            Clustering(str(orf), self.out_alignment,
-                       self.distance, self.out_clustering).cluster()
-
-            Visualization(str(orf), self.out_clustering,
-                          self.out_visualization, self.annotation).generate_graph()
+            query = Preprocess(self.input, self.out_dir).execute()
+            orf = OrfFinder(query).orf_finder()
+            aligned = Alignment(orf, self.database, self.subject_cover).align()
+            clusters = Clustering(orf, aligned, self.distance).cluster()
+            Visualization(orf, clusters).generate_graph()
         except Exception as e:
             logging.info(e)
 

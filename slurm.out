@@ -1,0 +1,1974 @@
+2022-02-28 09:38:32,165 - INFO - Running /beegfs/projects/ciwars/ILLUMINA_LANE_1 against database/CARD/broadstreet/protein_fasta_protein_homolog_model.fasta
+2022-02-28 09:38:32,165 - INFO - ----- Parameters -----
+2022-02-28 09:38:32,165 - INFO - Query file: /beegfs/projects/ciwars/ILLUMINA_LANE_1
+2022-02-28 09:38:32,165 - INFO - Database file: database/CARD/broadstreet/protein_fasta_protein_homolog_model.fasta
+2022-02-28 09:38:32,165 - INFO - Annotation file: database/CARD/broadstreet/aro_categories_index.tsv
+2022-02-28 09:38:32,165 - INFO - Subject cover: 70
+2022-02-28 09:38:32,165 - INFO - Distance: 20
+2022-02-28 09:38:32,166 - INFO - Logging directory: log/ILLUMINA_LANE_1
+2022-02-28 09:38:32,166 - INFO - Results directory: results/ILLUMINA_LANE_1
+2022-02-28 09:38:32,166 - INFO - ----------------------
+2022-02-28 09:38:32,168 - INFO - Run the QC steps: remove adapters and low-quality reads
+2022-02-28 09:38:32,264 - INFO - Fastp of /beegfs/projects/ciwars/ILLUMINA_LANE_1/Y20_M10_D12_EFF_S36_L001_R1_001.fastq.gz and /beegfs/projects/ciwars/ILLUMINA_LANE_1/Y20_M10_D12_EFF_S36_L001_R2_001.fastq.gz
+Read1 before filtering:
+total reads: 26951055
+total bases: 4069609305
+Q20 bases: 3931484498(96.6059%)
+Q30 bases: 3724569167(91.5215%)
+
+Read2 before filtering:
+total reads: 26951055
+total bases: 4069609305
+Q20 bases: 3888410422(95.5475%)
+Q30 bases: 3630396747(89.2075%)
+
+Read1 after filtering:
+total reads: 26593700
+total bases: 3699104794
+Q20 bases: 3604214164(97.4348%)
+Q30 bases: 3431695512(92.771%)
+
+Read2 after filtering:
+total reads: 26593700
+total bases: 3699352520
+Q20 bases: 3558639192(96.1963%)
+Q30 bases: 3327706192(89.9537%)
+
+Filtering result:
+reads passed filter: 53187400
+reads failed due to low quality: 695416
+reads failed due to too many N: 1752
+reads failed due to too short: 17542
+reads with adapter trimmed: 12036286
+bases trimmed due to adapters: 569151975
+
+Duplication rate: 5.04538%
+
+Insert size peak (evaluated by paired-end reads): 106
+
+JSON report: fastp.json
+HTML report: fastp.html
+
+fastp -i /beegfs/projects/ciwars/ILLUMINA_LANE_1/Y20_M10_D12_EFF_S36_L001_R1_001.fastq.gz -I /beegfs/projects/ciwars/ILLUMINA_LANE_1/Y20_M10_D12_EFF_S36_L001_R2_001.fastq.gz -o results/ILLUMINA_LANE_1/02-28--09-38-32/fastp_Y20_M10_D12_EFF_S36_L001_R1_001.fastq.gz -O results/ILLUMINA_LANE_1/02-28--09-38-32/fastp_Y20_M10_D12_EFF_S36_L001_R2_001.fastq.gz --average_qual 10 
+fastp v0.23.2, time used: 146 seconds
+2022-02-28 09:40:58,224 - INFO - Fastp of /beegfs/projects/ciwars/ILLUMINA_LANE_1/Y20_M10_D12_EFF_S36_L002_R1_001.fastq.gz and /beegfs/projects/ciwars/ILLUMINA_LANE_1/Y20_M10_D12_EFF_S36_L002_R2_001.fastq.gz
+Read1 before filtering:
+total reads: 26586586
+total bases: 4014574486
+Q20 bases: 3881147192(96.6764%)
+Q30 bases: 3679512650(91.6539%)
+
+Read2 before filtering:
+total reads: 26586586
+total bases: 4014574486
+Q20 bases: 3838141328(95.6052%)
+Q30 bases: 3585265023(89.3062%)
+
+Read1 after filtering:
+total reads: 26245639
+total bases: 3619484435
+Q20 bases: 3529639435(97.5177%)
+Q30 bases: 3363969346(92.9406%)
+
+Read2 after filtering:
+total reads: 26245639
+total bases: 3619748025
+Q20 bases: 3484557479(96.2652%)
+Q30 bases: 3260108599(90.0645%)
+
+Filtering result:
+reads passed filter: 52491278
+reads failed due to low quality: 664110
+reads failed due to too many N: 1428
+reads failed due to too short: 16356
+reads with adapter trimmed: 13137566
+bases trimmed due to adapters: 618948645
+
+Duplication rate: 6.30245%
+
+Insert size peak (evaluated by paired-end reads): 127
+
+JSON report: fastp.json
+HTML report: fastp.html
+
+fastp -i /beegfs/projects/ciwars/ILLUMINA_LANE_1/Y20_M10_D12_EFF_S36_L002_R1_001.fastq.gz -I /beegfs/projects/ciwars/ILLUMINA_LANE_1/Y20_M10_D12_EFF_S36_L002_R2_001.fastq.gz -o results/ILLUMINA_LANE_1/02-28--09-38-32/fastp_Y20_M10_D12_EFF_S36_L002_R1_001.fastq.gz -O results/ILLUMINA_LANE_1/02-28--09-38-32/fastp_Y20_M10_D12_EFF_S36_L002_R2_001.fastq.gz --average_qual 10 
+fastp v0.23.2, time used: 142 seconds
+2022-02-28 09:43:21 - MEGAHIT v1.2.9
+2022-02-28 09:43:21 - Using megahit_core with POPCNT and BMI2 support
+2022-02-28 09:43:21 - Convert reads to binary library
+2022-02-28 09:44:16 - b'INFO  sequence/io/sequence_lib.cpp  :   75 - Lib 0 (/home/khoidnyds/Bifunctions/results/ILLUMINA_LANE_1/02-28--09-38-32/fastp_Y20_M10_D12_EFF_S36_L001_R1_001.fastq.gz,/home/khoidnyds/Bifunctions/results/ILLUMINA_LANE_1/02-28--09-38-32/fastp_Y20_M10_D12_EFF_S36_L001_R2_001.fastq.gz): pe, 53187400 reads, 151 max length'
+2022-02-28 09:45:11 - b'INFO  sequence/io/sequence_lib.cpp  :   75 - Lib 1 (/home/khoidnyds/Bifunctions/results/ILLUMINA_LANE_1/02-28--09-38-32/fastp_Y20_M10_D12_EFF_S36_L002_R1_001.fastq.gz,/home/khoidnyds/Bifunctions/results/ILLUMINA_LANE_1/02-28--09-38-32/fastp_Y20_M10_D12_EFF_S36_L002_R2_001.fastq.gz): pe, 52491278 reads, 151 max length'
+2022-02-28 09:45:11 - b'INFO  utils/utils.h                 :  152 - Real: 110.5381\tuser: 83.0596\tsys: 13.3923\tmaxrss: 252060'
+2022-02-28 09:45:11 - k-max reset to: 127 
+2022-02-28 09:45:11 - Start assembly. Number of CPU threads 128 
+2022-02-28 09:45:11 - k list: 27,37,47,57,67,77,87,97,107,117,127 
+2022-02-28 09:45:11 - Memory used: 243279264153
+2022-02-28 09:45:11 - Extracting solid (k+1)-mers and building sdbg for k = 27
+2022-02-28 09:49:46 - Assemble contigs from SdBG for k = 27
+2022-02-28 11:30:48 - Local assembly for k = 27
+2022-02-28 12:07:41 - Extract iterative edges from k = 27 to 37 
+2022-02-28 12:28:10 - Build graph for k = 37 
+2022-02-28 12:33:02 - Assemble contigs from SdBG for k = 37
+2022-02-28 13:37:31 - Local assembly for k = 37
+2022-02-28 14:23:44 - Extract iterative edges from k = 37 to 47 
+2022-02-28 14:30:49 - Build graph for k = 47 
+2022-02-28 14:34:13 - Assemble contigs from SdBG for k = 47
+2022-02-28 15:28:38 - Local assembly for k = 47
+2022-02-28 16:16:02 - Extract iterative edges from k = 47 to 57 
+2022-02-28 16:18:50 - Build graph for k = 57 
+2022-02-28 16:21:49 - Assemble contigs from SdBG for k = 57
+2022-02-28 16:53:41 - Local assembly for k = 57
+2022-02-28 17:41:51 - Extract iterative edges from k = 57 to 67 
+2022-02-28 17:43:32 - Build graph for k = 67 
+2022-02-28 17:45:51 - Assemble contigs from SdBG for k = 67
+2022-02-28 18:10:51 - Local assembly for k = 67
+2022-02-28 18:59:52 - Extract iterative edges from k = 67 to 77 
+2022-02-28 19:00:58 - Build graph for k = 77 
+2022-02-28 19:02:56 - Assemble contigs from SdBG for k = 77
+2022-02-28 19:23:37 - Local assembly for k = 77
+2022-02-28 20:10:23 - Extract iterative edges from k = 77 to 87 
+2022-02-28 20:11:05 - Build graph for k = 87 
+2022-02-28 20:12:40 - Assemble contigs from SdBG for k = 87
+2022-02-28 20:29:03 - Local assembly for k = 87
+2022-02-28 21:08:54 - Extract iterative edges from k = 87 to 97 
+2022-02-28 21:09:33 - Build graph for k = 97 
+2022-02-28 21:10:55 - Assemble contigs from SdBG for k = 97
+2022-02-28 21:23:25 - Local assembly for k = 97
+2022-02-28 21:57:17 - Extract iterative edges from k = 97 to 107 
+2022-02-28 21:57:46 - Build graph for k = 107 
+2022-02-28 21:58:56 - Assemble contigs from SdBG for k = 107
+2022-02-28 22:10:12 - Local assembly for k = 107
+2022-02-28 22:45:17 - Extract iterative edges from k = 107 to 117 
+2022-02-28 22:45:38 - Build graph for k = 117 
+2022-02-28 22:46:37 - Assemble contigs from SdBG for k = 117
+2022-02-28 22:57:39 - Local assembly for k = 117
+2022-02-28 23:31:58 - Extract iterative edges from k = 117 to 127 
+2022-02-28 23:32:14 - Build graph for k = 127 
+2022-02-28 23:33:15 - Assemble contigs from SdBG for k = 127
+2022-02-28 23:42:44 - Merging to output final contigs 
+2022-02-28 23:42:51 - 2117828 contigs, total 1379872783 bp, min 200 bp, max 723788 bp, avg 651 bp, N50 675 bp
+2022-02-28 23:42:52 - ALL DONE. Time elapsed: 50371.554774 seconds 
+2022-02-28 23:43:10,153 - INFO - Found 1379872783 contigs
+2022-02-28 23:43:10,155 - INFO - Run the ORF finder
+[96morfipy version 0.0.4[0m
+[96mUsing translation table: Standard (transl_table=1) start: ['TTG', 'CTG', 'ATG'] stop: ['TAA', 'TAG', 'TGA'][0m
+[96mSetting chunk size 716 MB. Procs 90[0m
+[93mLogs will be saved to: results/ILLUMINA_LANE_1/02-28--09-38-32/orfipy_2022_02_28_23_43_10.492993.log[0m
+Processing 715000692 bytesProcessing 1430001004 bytesProcessing 2145001086 bytesProcessing 2759745566 bytes[92mProcessed 2117828 sequences in 45.80 seconds[0m
+
+2022-02-28 23:47:22,572 - INFO - Found 2986275462 ORFs
+2022-02-28 23:47:22,577 - INFO - Run the DIAMOND alignment
+diamond v2.0.13.151 (C) Max Planck Society for the Advancement of Science
+Documentation, support and updates available at http://www.diamondsearch.org
+Please cite: http://dx.doi.org/10.1038/s41592-021-01101-x Nature Methods (2021)
+
+#CPU threads: 128
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+CPU features detected: ssse3 popcnt sse4.1 avx2
+Runtime dispatch: disabled
+Temporary directory: results/ILLUMINA_LANE_1/02-28--09-38-32
+#Target sequences to report alignments for: 25
+Opening the database...  [0.032s]
+Database: database/built/protein_fasta_protein_homolog_model.dmnd (type: Diamond database, sequences: 2979, letters: 938491)
+Block size = 2000000000
+Opening the input file...  [0.018s]
+Opening the output file...  [0.001s]
+Loading query sequences...  [14.48s]
+Sequences = 46818570, letters = 2000000176, average length = 42
+Masking queries...  [2.78s]
+Algorithm: Double-indexed
+Shape configuration: 1011110111,110100100010111,11001011111,101110001111,11011101100001,1111010010101,111001001001011,10101001101011,111101010011,1111000010000111,1100011011011,1101010000011011,1110001010101001,110011000110011,11011010001101,1101001100010011
+Building query histograms...  [6.061s]
+Allocating buffers...  [0.012s]
+Loading reference sequences...  [0.001s]
+Sequences = 2979, letters = 938491, average length = 315
+Masking reference...  [0.006s]
+Initializing temporary storage...  [0.068s]
+Building reference histograms...  [0.014s]
+Allocating buffers...  [0.01s]
+Processing query block 1, reference block 1/1, shape 1/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.427s]
+Computing hash join...  [0.266s]
+Masking low complexity seeds...  [0.017s]
+Masked seeds: 1483/69585 (2.13%)
+Masked positions (query): 1772113/2000000176 (0.09%)
+Masked positions (target): 4438/938491 (0.47%)
+Searching alignments...  [0.122s]
+Processing query block 1, reference block 1/1, shape 1/16, index chunk 2/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.487s]
+Computing hash join...  [0.133s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1394/69690 (2.00%)
+Masked positions (query): 1438166/2000000176 (0.07%)
+Masked positions (target): 3822/938491 (0.41%)
+Searching alignments...  [0.124s]
+Processing query block 1, reference block 1/1, shape 1/16, index chunk 3/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.527s]
+Computing hash join...  [0.127s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1375/70068 (1.96%)
+Masked positions (query): 1368777/2000000176 (0.07%)
+Masked positions (target): 4917/938491 (0.52%)
+Searching alignments...  [0.123s]
+Processing query block 1, reference block 1/1, shape 1/16, index chunk 4/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.426s]
+Computing hash join...  [0.12s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1451/69724 (2.08%)
+Masked positions (query): 1493785/2000000176 (0.07%)
+Masked positions (target): 4034/938491 (0.43%)
+Searching alignments...  [0.119s]
+Processing query block 1, reference block 1/1, shape 2/16, index chunk 1/4.
+Building reference seed array...  [0.011s]
+Building query seed array...  [0.366s]
+Computing hash join...  [0.096s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1482/69785 (2.12%)
+Masked positions (query): 1445417/2000000176 (0.07%)
+Masked positions (target): 4627/938491 (0.49%)
+Searching alignments...  [0.102s]
+Processing query block 1, reference block 1/1, shape 2/16, index chunk 2/4.
+Building reference seed array...  [0.011s]
+Building query seed array...  [0.412s]
+Computing hash join...  [0.092s]
+Masking low complexity seeds...  [0.011s]
+Masked seeds: 1374/69627 (1.97%)
+Masked positions (query): 1249734/2000000176 (0.06%)
+Masked positions (target): 4351/938491 (0.46%)
+Searching alignments...  [0.092s]
+Processing query block 1, reference block 1/1, shape 2/16, index chunk 3/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.432s]
+Computing hash join...  [0.092s]
+Masking low complexity seeds...  [0.01s]
+Masked seeds: 1386/69675 (1.99%)
+Masked positions (query): 1181935/2000000176 (0.06%)
+Masked positions (target): 4054/938491 (0.43%)
+Searching alignments...  [0.099s]
+Processing query block 1, reference block 1/1, shape 2/16, index chunk 4/4.
+Building reference seed array...  [0.03s]
+Building query seed array...  [0.364s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1543/69388 (2.22%)
+Masked positions (query): 1360307/2000000176 (0.07%)
+Masked positions (target): 4897/938491 (0.52%)
+Searching alignments...  [0.091s]
+Processing query block 1, reference block 1/1, shape 3/16, index chunk 1/4.
+Building reference seed array...  [0.011s]
+Building query seed array...  [0.407s]
+Computing hash join...  [0.112s]
+Masking low complexity seeds...  [0.015s]
+Masked seeds: 1479/70039 (2.11%)
+Masked positions (query): 1683854/2000000176 (0.08%)
+Masked positions (target): 4313/938491 (0.46%)
+Searching alignments...  [0.121s]
+Processing query block 1, reference block 1/1, shape 3/16, index chunk 2/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.482s]
+Computing hash join...  [0.11s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1468/69716 (2.11%)
+Masked positions (query): 1488999/2000000176 (0.07%)
+Masked positions (target): 4429/938491 (0.47%)
+Searching alignments...  [0.121s]
+Processing query block 1, reference block 1/1, shape 3/16, index chunk 3/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.52s]
+Computing hash join...  [0.116s]
+Masking low complexity seeds...  [0.011s]
+Masked seeds: 1391/70367 (1.98%)
+Masked positions (query): 1347275/2000000176 (0.07%)
+Masked positions (target): 4015/938491 (0.43%)
+Searching alignments...  [0.119s]
+Processing query block 1, reference block 1/1, shape 3/16, index chunk 4/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.378s]
+Computing hash join...  [0.102s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1446/69469 (2.08%)
+Masked positions (query): 1443584/2000000176 (0.07%)
+Masked positions (target): 3815/938491 (0.41%)
+Searching alignments...  [0.107s]
+Processing query block 1, reference block 1/1, shape 4/16, index chunk 1/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.384s]
+Computing hash join...  [0.099s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1444/69982 (2.06%)
+Masked positions (query): 1558873/2000000176 (0.08%)
+Masked positions (target): 4157/938491 (0.44%)
+Searching alignments...  [0.113s]
+Processing query block 1, reference block 1/1, shape 4/16, index chunk 2/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.456s]
+Computing hash join...  [0.099s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1453/70083 (2.07%)
+Masked positions (query): 1393664/2000000176 (0.07%)
+Masked positions (target): 5050/938491 (0.54%)
+Searching alignments...  [0.111s]
+Processing query block 1, reference block 1/1, shape 4/16, index chunk 3/4.
+Building reference seed array...  [0.011s]
+Building query seed array...  [0.501s]
+Computing hash join...  [0.099s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1421/70008 (2.03%)
+Masked positions (query): 1308177/2000000176 (0.07%)
+Masked positions (target): 4068/938491 (0.43%)
+Searching alignments...  [0.112s]
+Processing query block 1, reference block 1/1, shape 4/16, index chunk 4/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.371s]
+Computing hash join...  [0.1s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1507/69655 (2.16%)
+Masked positions (query): 1466192/2000000176 (0.07%)
+Masked positions (target): 4876/938491 (0.52%)
+Searching alignments...  [0.109s]
+Processing query block 1, reference block 1/1, shape 5/16, index chunk 1/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.38s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1534/69178 (2.22%)
+Masked positions (query): 1549675/2000000176 (0.08%)
+Masked positions (target): 4565/938491 (0.49%)
+Searching alignments...  [0.104s]
+Processing query block 1, reference block 1/1, shape 5/16, index chunk 2/4.
+Building reference seed array...  [0.011s]
+Building query seed array...  [0.451s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.011s]
+Masked seeds: 1459/69632 (2.10%)
+Masked positions (query): 1308167/2000000176 (0.07%)
+Masked positions (target): 4531/938491 (0.48%)
+Searching alignments...  [0.109s]
+Processing query block 1, reference block 1/1, shape 5/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.462s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1439/69395 (2.07%)
+Masked positions (query): 1270122/2000000176 (0.06%)
+Masked positions (target): 4581/938491 (0.49%)
+Searching alignments...  [0.111s]
+Processing query block 1, reference block 1/1, shape 5/16, index chunk 4/4.
+Building reference seed array...  [0.011s]
+Building query seed array...  [0.369s]
+Computing hash join...  [0.092s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1535/68484 (2.24%)
+Masked positions (query): 1374461/2000000176 (0.07%)
+Masked positions (target): 4255/938491 (0.45%)
+Searching alignments...  [0.108s]
+Processing query block 1, reference block 1/1, shape 6/16, index chunk 1/4.
+Building reference seed array...  [0.02s]
+Building query seed array...  [0.385s]
+Computing hash join...  [0.099s]
+Masking low complexity seeds...  [0.015s]
+Masked seeds: 1528/69642 (2.19%)
+Masked positions (query): 1566098/2000000176 (0.08%)
+Masked positions (target): 4375/938491 (0.47%)
+Searching alignments...  [0.107s]
+Processing query block 1, reference block 1/1, shape 6/16, index chunk 2/4.
+Building reference seed array...  [0.02s]
+Building query seed array...  [0.394s]
+Computing hash join...  [0.097s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1449/70129 (2.07%)
+Masked positions (query): 1368886/2000000176 (0.07%)
+Masked positions (target): 5012/938491 (0.53%)
+Searching alignments...  [0.108s]
+Processing query block 1, reference block 1/1, shape 6/16, index chunk 3/4.
+Building reference seed array...  [0.021s]
+Building query seed array...  [0.431s]
+Computing hash join...  [0.1s]
+Masking low complexity seeds...  [0.01s]
+Masked seeds: 1406/70134 (2.00%)
+Masked positions (query): 1259339/2000000176 (0.06%)
+Masked positions (target): 3882/938491 (0.41%)
+Searching alignments...  [0.113s]
+Processing query block 1, reference block 1/1, shape 6/16, index chunk 4/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.369s]
+Computing hash join...  [0.096s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1452/69291 (2.10%)
+Masked positions (query): 1383673/2000000176 (0.07%)
+Masked positions (target): 4116/938491 (0.44%)
+Searching alignments...  [0.096s]
+Processing query block 1, reference block 1/1, shape 7/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.373s]
+Computing hash join...  [0.131s]
+Masking low complexity seeds...  [0.011s]
+Masked seeds: 1498/69796 (2.15%)
+Masked positions (query): 1440244/2000000176 (0.07%)
+Masked positions (target): 4326/938491 (0.46%)
+Searching alignments...  [0.077s]
+Processing query block 1, reference block 1/1, shape 7/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.392s]
+Computing hash join...  [0.126s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1439/69824 (2.06%)
+Masked positions (query): 1278743/2000000176 (0.06%)
+Masked positions (target): 4575/938491 (0.49%)
+Searching alignments...  [0.076s]
+Processing query block 1, reference block 1/1, shape 7/16, index chunk 3/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.456s]
+Computing hash join...  [0.124s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1443/70134 (2.06%)
+Masked positions (query): 1241152/2000000176 (0.06%)
+Masked positions (target): 3618/938491 (0.39%)
+Searching alignments...  [0.076s]
+Processing query block 1, reference block 1/1, shape 7/16, index chunk 4/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.367s]
+Computing hash join...  [0.129s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1522/69403 (2.19%)
+Masked positions (query): 1331161/2000000176 (0.07%)
+Masked positions (target): 4435/938491 (0.47%)
+Searching alignments...  [0.079s]
+Processing query block 1, reference block 1/1, shape 8/16, index chunk 1/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.361s]
+Computing hash join...  [0.137s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1499/69793 (2.15%)
+Masked positions (query): 1524702/2000000176 (0.08%)
+Masked positions (target): 4323/938491 (0.46%)
+Searching alignments...  [0.079s]
+Processing query block 1, reference block 1/1, shape 8/16, index chunk 2/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.454s]
+Computing hash join...  [0.136s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1383/69940 (1.98%)
+Masked positions (query): 1277671/2000000176 (0.06%)
+Masked positions (target): 3887/938491 (0.41%)
+Searching alignments...  [0.081s]
+Processing query block 1, reference block 1/1, shape 8/16, index chunk 3/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.471s]
+Computing hash join...  [0.13s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1444/69782 (2.07%)
+Masked positions (query): 1278693/2000000176 (0.06%)
+Masked positions (target): 3807/938491 (0.41%)
+Searching alignments...  [0.08s]
+Processing query block 1, reference block 1/1, shape 8/16, index chunk 4/4.
+Building reference seed array...  [0.018s]
+Building query seed array...  [0.363s]
+Computing hash join...  [0.133s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1515/69483 (2.18%)
+Masked positions (query): 1377213/2000000176 (0.07%)
+Masked positions (target): 3937/938491 (0.42%)
+Searching alignments...  [0.078s]
+Processing query block 1, reference block 1/1, shape 9/16, index chunk 1/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.391s]
+Computing hash join...  [0.137s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1540/70116 (2.20%)
+Masked positions (query): 1677895/2000000176 (0.08%)
+Masked positions (target): 6139/938491 (0.65%)
+Searching alignments...  [0.084s]
+Processing query block 1, reference block 1/1, shape 9/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.448s]
+Computing hash join...  [0.143s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1431/69882 (2.05%)
+Masked positions (query): 1370771/2000000176 (0.07%)
+Masked positions (target): 4177/938491 (0.45%)
+Searching alignments...  [0.088s]
+Processing query block 1, reference block 1/1, shape 9/16, index chunk 3/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.47s]
+Computing hash join...  [0.138s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1374/69928 (1.96%)
+Masked positions (query): 1284969/2000000176 (0.06%)
+Masked positions (target): 4209/938491 (0.45%)
+Searching alignments...  [0.085s]
+Processing query block 1, reference block 1/1, shape 9/16, index chunk 4/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.393s]
+Computing hash join...  [0.145s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1527/69686 (2.19%)
+Masked positions (query): 1485020/2000000176 (0.07%)
+Masked positions (target): 4567/938491 (0.49%)
+Searching alignments...  [0.085s]
+Processing query block 1, reference block 1/1, shape 10/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.353s]
+Computing hash join...  [0.127s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1445/70025 (2.06%)
+Masked positions (query): 1328847/2000000176 (0.07%)
+Masked positions (target): 3912/938491 (0.42%)
+Searching alignments...  [0.073s]
+Processing query block 1, reference block 1/1, shape 10/16, index chunk 2/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.42s]
+Computing hash join...  [0.125s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1441/69246 (2.08%)
+Masked positions (query): 1205318/2000000176 (0.06%)
+Masked positions (target): 4291/938491 (0.46%)
+Searching alignments...  [0.073s]
+Processing query block 1, reference block 1/1, shape 10/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.449s]
+Computing hash join...  [0.121s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1461/69641 (2.10%)
+Masked positions (query): 1189808/2000000176 (0.06%)
+Masked positions (target): 4974/938491 (0.53%)
+Searching alignments...  [0.074s]
+Processing query block 1, reference block 1/1, shape 10/16, index chunk 4/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.331s]
+Computing hash join...  [0.125s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1484/69834 (2.13%)
+Masked positions (query): 1231125/2000000176 (0.06%)
+Masked positions (target): 4005/938491 (0.43%)
+Searching alignments...  [0.074s]
+Processing query block 1, reference block 1/1, shape 11/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.367s]
+Computing hash join...  [0.132s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1548/69498 (2.23%)
+Masked positions (query): 1559430/2000000176 (0.08%)
+Masked positions (target): 4245/938491 (0.45%)
+Searching alignments...  [0.082s]
+Processing query block 1, reference block 1/1, shape 11/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.474s]
+Computing hash join...  [0.132s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1480/69262 (2.14%)
+Masked positions (query): 1364004/2000000176 (0.07%)
+Masked positions (target): 4234/938491 (0.45%)
+Searching alignments...  [0.083s]
+Processing query block 1, reference block 1/1, shape 11/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.48s]
+Computing hash join...  [0.139s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1474/70496 (2.09%)
+Masked positions (query): 1298631/2000000176 (0.06%)
+Masked positions (target): 3546/938491 (0.38%)
+Searching alignments...  [0.081s]
+Processing query block 1, reference block 1/1, shape 11/16, index chunk 4/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.375s]
+Computing hash join...  [0.122s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1544/69554 (2.22%)
+Masked positions (query): 1444940/2000000176 (0.07%)
+Masked positions (target): 4603/938491 (0.49%)
+Searching alignments...  [0.08s]
+Processing query block 1, reference block 1/1, shape 12/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.359s]
+Computing hash join...  [0.117s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1461/69467 (2.10%)
+Masked positions (query): 1365791/2000000176 (0.07%)
+Masked positions (target): 3592/938491 (0.38%)
+Searching alignments...  [0.074s]
+Processing query block 1, reference block 1/1, shape 12/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.425s]
+Computing hash join...  [0.128s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1473/69495 (2.12%)
+Masked positions (query): 1241226/2000000176 (0.06%)
+Masked positions (target): 3833/938491 (0.41%)
+Searching alignments...  [0.078s]
+Processing query block 1, reference block 1/1, shape 12/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.404s]
+Computing hash join...  [0.117s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1357/69343 (1.96%)
+Masked positions (query): 1108094/2000000176 (0.06%)
+Masked positions (target): 3865/938491 (0.41%)
+Searching alignments...  [0.074s]
+Processing query block 1, reference block 1/1, shape 12/16, index chunk 4/4.
+Building reference seed array...  [0.016s]
+Building query seed array...  [0.361s]
+Computing hash join...  [0.128s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1465/69686 (2.10%)
+Masked positions (query): 1255285/2000000176 (0.06%)
+Masked positions (target): 4234/938491 (0.45%)
+Searching alignments...  [0.076s]
+Processing query block 1, reference block 1/1, shape 13/16, index chunk 1/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.365s]
+Computing hash join...  [0.122s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1472/69855 (2.11%)
+Masked positions (query): 1397279/2000000176 (0.07%)
+Masked positions (target): 4484/938491 (0.48%)
+Searching alignments...  [0.076s]
+Processing query block 1, reference block 1/1, shape 13/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.422s]
+Computing hash join...  [0.121s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1409/69521 (2.03%)
+Masked positions (query): 1196248/2000000176 (0.06%)
+Masked positions (target): 4859/938491 (0.52%)
+Searching alignments...  [0.075s]
+Processing query block 1, reference block 1/1, shape 13/16, index chunk 3/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.426s]
+Computing hash join...  [0.119s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1440/69343 (2.08%)
+Masked positions (query): 1140139/2000000176 (0.06%)
+Masked positions (target): 4538/938491 (0.48%)
+Searching alignments...  [0.075s]
+Processing query block 1, reference block 1/1, shape 13/16, index chunk 4/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.36s]
+Computing hash join...  [0.124s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1525/69202 (2.20%)
+Masked positions (query): 1277544/2000000176 (0.06%)
+Masked positions (target): 5016/938491 (0.53%)
+Searching alignments...  [0.073s]
+Processing query block 1, reference block 1/1, shape 14/16, index chunk 1/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.361s]
+Computing hash join...  [0.126s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1583/69656 (2.27%)
+Masked positions (query): 1520637/2000000176 (0.08%)
+Masked positions (target): 4543/938491 (0.48%)
+Searching alignments...  [0.075s]
+Processing query block 1, reference block 1/1, shape 14/16, index chunk 2/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.447s]
+Computing hash join...  [0.127s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1524/69565 (2.19%)
+Masked positions (query): 1324931/2000000176 (0.07%)
+Masked positions (target): 5073/938491 (0.54%)
+Searching alignments...  [0.075s]
+Processing query block 1, reference block 1/1, shape 14/16, index chunk 3/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.468s]
+Computing hash join...  [0.127s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1500/69550 (2.16%)
+Masked positions (query): 1270461/2000000176 (0.06%)
+Masked positions (target): 4933/938491 (0.53%)
+Searching alignments...  [0.075s]
+Processing query block 1, reference block 1/1, shape 14/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.357s]
+Computing hash join...  [0.127s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1554/69048 (2.25%)
+Masked positions (query): 1402475/2000000176 (0.07%)
+Masked positions (target): 4830/938491 (0.51%)
+Searching alignments...  [0.079s]
+Processing query block 1, reference block 1/1, shape 15/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.376s]
+Computing hash join...  [0.133s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1509/69460 (2.17%)
+Masked positions (query): 1559649/2000000176 (0.08%)
+Masked positions (target): 4008/938491 (0.43%)
+Searching alignments...  [0.08s]
+Processing query block 1, reference block 1/1, shape 15/16, index chunk 2/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.447s]
+Computing hash join...  [0.126s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1458/69720 (2.09%)
+Masked positions (query): 1308298/2000000176 (0.07%)
+Masked positions (target): 3788/938491 (0.40%)
+Searching alignments...  [0.079s]
+Processing query block 1, reference block 1/1, shape 15/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.439s]
+Computing hash join...  [0.132s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1436/69688 (2.06%)
+Masked positions (query): 1278184/2000000176 (0.06%)
+Masked positions (target): 4309/938491 (0.46%)
+Searching alignments...  [0.077s]
+Processing query block 1, reference block 1/1, shape 15/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.353s]
+Computing hash join...  [0.132s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1579/69895 (2.26%)
+Masked positions (query): 1434859/2000000176 (0.07%)
+Masked positions (target): 5533/938491 (0.59%)
+Searching alignments...  [0.08s]
+Processing query block 1, reference block 1/1, shape 16/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.345s]
+Computing hash join...  [0.128s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1569/69529 (2.26%)
+Masked positions (query): 1459235/2000000176 (0.07%)
+Masked positions (target): 4403/938491 (0.47%)
+Searching alignments...  [0.072s]
+Processing query block 1, reference block 1/1, shape 16/16, index chunk 2/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.422s]
+Computing hash join...  [0.129s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1443/69137 (2.09%)
+Masked positions (query): 1255478/2000000176 (0.06%)
+Masked positions (target): 4765/938491 (0.51%)
+Searching alignments...  [0.074s]
+Processing query block 1, reference block 1/1, shape 16/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.463s]
+Computing hash join...  [0.124s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1455/69401 (2.10%)
+Masked positions (query): 1194488/2000000176 (0.06%)
+Masked positions (target): 3938/938491 (0.42%)
+Searching alignments...  [0.076s]
+Processing query block 1, reference block 1/1, shape 16/16, index chunk 4/4.
+Building reference seed array...  [0.026s]
+Building query seed array...  [0.351s]
+Computing hash join...  [0.119s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1618/69483 (2.33%)
+Masked positions (query): 1381884/2000000176 (0.07%)
+Masked positions (target): 4054/938491 (0.43%)
+Searching alignments...  [0.074s]
+Deallocating buffers...  [0s]
+Clearing query masking...  [0.725s]
+Computing alignments...  [23.912s]
+Deallocating reference...  [0s]
+Loading reference sequences...  [0s]
+Deallocating buffers...  [0.007s]
+Deallocating queries...  [0.007s]
+Loading query sequences...  [14.185s]
+Sequences = 46844808, letters = 2000000324, average length = 42
+Masking queries...  [2.896s]
+Building query histograms...  [5.795s]
+Allocating buffers...  [0.011s]
+Loading reference sequences...  [0.001s]
+Sequences = 2979, letters = 938491, average length = 315
+Masking reference...  [0.005s]
+Initializing temporary storage...  [0.065s]
+Building reference histograms...  [0.012s]
+Allocating buffers...  [0.01s]
+Processing query block 2, reference block 1/1, shape 1/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.424s]
+Computing hash join...  [0.108s]
+Masking low complexity seeds...  [0.01s]
+Masked seeds: 1483/69612 (2.13%)
+Masked positions (query): 1757346/2000000324 (0.09%)
+Masked positions (target): 4438/938491 (0.47%)
+Searching alignments...  [0.092s]
+Processing query block 2, reference block 1/1, shape 1/16, index chunk 2/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.422s]
+Computing hash join...  [0.135s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1394/69646 (2.00%)
+Masked positions (query): 1431666/2000000324 (0.07%)
+Masked positions (target): 3822/938491 (0.41%)
+Searching alignments...  [0.093s]
+Processing query block 2, reference block 1/1, shape 1/16, index chunk 3/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.466s]
+Computing hash join...  [0.107s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1375/70067 (1.96%)
+Masked positions (query): 1362672/2000000324 (0.07%)
+Masked positions (target): 4917/938491 (0.52%)
+Searching alignments...  [0.092s]
+Processing query block 2, reference block 1/1, shape 1/16, index chunk 4/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.389s]
+Computing hash join...  [0.102s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1451/69698 (2.08%)
+Masked positions (query): 1486358/2000000324 (0.07%)
+Masked positions (target): 4034/938491 (0.43%)
+Searching alignments...  [0.092s]
+Processing query block 2, reference block 1/1, shape 2/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.345s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1482/69795 (2.12%)
+Masked positions (query): 1438968/2000000324 (0.07%)
+Masked positions (target): 4627/938491 (0.49%)
+Searching alignments...  [0.074s]
+Processing query block 2, reference block 1/1, shape 2/16, index chunk 2/4.
+Building reference seed array...  [0.013s]
+Building query seed array...  [0.423s]
+Computing hash join...  [0.092s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1375/69651 (1.97%)
+Masked positions (query): 1247241/2000000324 (0.06%)
+Masked positions (target): 4352/938491 (0.46%)
+Searching alignments...  [0.075s]
+Processing query block 2, reference block 1/1, shape 2/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.414s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1385/69635 (1.99%)
+Masked positions (query): 1179706/2000000324 (0.06%)
+Masked positions (target): 4053/938491 (0.43%)
+Searching alignments...  [0.074s]
+Processing query block 2, reference block 1/1, shape 2/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.333s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1543/69400 (2.22%)
+Masked positions (query): 1356357/2000000324 (0.07%)
+Masked positions (target): 4897/938491 (0.52%)
+Searching alignments...  [0.075s]
+Processing query block 2, reference block 1/1, shape 3/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.372s]
+Computing hash join...  [0.096s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1480/70065 (2.11%)
+Masked positions (query): 1672343/2000000324 (0.08%)
+Masked positions (target): 4314/938491 (0.46%)
+Searching alignments...  [0.086s]
+Processing query block 2, reference block 1/1, shape 3/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.43s]
+Computing hash join...  [0.098s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1468/69656 (2.11%)
+Masked positions (query): 1480644/2000000324 (0.07%)
+Masked positions (target): 4429/938491 (0.47%)
+Searching alignments...  [0.089s]
+Processing query block 2, reference block 1/1, shape 3/16, index chunk 3/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.498s]
+Computing hash join...  [0.101s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1391/70311 (1.98%)
+Masked positions (query): 1338506/2000000324 (0.07%)
+Masked positions (target): 4015/938491 (0.43%)
+Searching alignments...  [0.091s]
+Processing query block 2, reference block 1/1, shape 3/16, index chunk 4/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.363s]
+Computing hash join...  [0.097s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1446/69450 (2.08%)
+Masked positions (query): 1435541/2000000324 (0.07%)
+Masked positions (target): 3815/938491 (0.41%)
+Searching alignments...  [0.086s]
+Processing query block 2, reference block 1/1, shape 4/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.38s]
+Computing hash join...  [0.098s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1444/70009 (2.06%)
+Masked positions (query): 1549337/2000000324 (0.08%)
+Masked positions (target): 4157/938491 (0.44%)
+Searching alignments...  [0.083s]
+Processing query block 2, reference block 1/1, shape 4/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.418s]
+Computing hash join...  [0.096s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1453/70117 (2.07%)
+Masked positions (query): 1390407/2000000324 (0.07%)
+Masked positions (target): 5050/938491 (0.54%)
+Searching alignments...  [0.088s]
+Processing query block 2, reference block 1/1, shape 4/16, index chunk 3/4.
+Building reference seed array...  [0.02s]
+Building query seed array...  [0.447s]
+Computing hash join...  [0.098s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1421/69932 (2.03%)
+Masked positions (query): 1305005/2000000324 (0.07%)
+Masked positions (target): 4068/938491 (0.43%)
+Searching alignments...  [0.086s]
+Processing query block 2, reference block 1/1, shape 4/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.364s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1507/69709 (2.16%)
+Masked positions (query): 1456961/2000000324 (0.07%)
+Masked positions (target): 4876/938491 (0.52%)
+Searching alignments...  [0.083s]
+Processing query block 2, reference block 1/1, shape 5/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.361s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1534/69126 (2.22%)
+Masked positions (query): 1539081/2000000324 (0.08%)
+Masked positions (target): 4565/938491 (0.49%)
+Searching alignments...  [0.078s]
+Processing query block 2, reference block 1/1, shape 5/16, index chunk 2/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.423s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1459/69667 (2.09%)
+Masked positions (query): 1304148/2000000324 (0.07%)
+Masked positions (target): 4531/938491 (0.48%)
+Searching alignments...  [0.08s]
+Processing query block 2, reference block 1/1, shape 5/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.45s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1439/69381 (2.07%)
+Masked positions (query): 1265779/2000000324 (0.06%)
+Masked positions (target): 4581/938491 (0.49%)
+Searching alignments...  [0.079s]
+Processing query block 2, reference block 1/1, shape 5/16, index chunk 4/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.362s]
+Computing hash join...  [0.089s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1535/68493 (2.24%)
+Masked positions (query): 1367383/2000000324 (0.07%)
+Masked positions (target): 4255/938491 (0.45%)
+Searching alignments...  [0.082s]
+Processing query block 2, reference block 1/1, shape 6/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.365s]
+Computing hash join...  [0.095s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1528/69574 (2.20%)
+Masked positions (query): 1555715/2000000324 (0.08%)
+Masked positions (target): 4375/938491 (0.47%)
+Searching alignments...  [0.08s]
+Processing query block 2, reference block 1/1, shape 6/16, index chunk 2/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.408s]
+Computing hash join...  [0.097s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1449/70135 (2.07%)
+Masked positions (query): 1361530/2000000324 (0.07%)
+Masked positions (target): 5012/938491 (0.53%)
+Searching alignments...  [0.083s]
+Processing query block 2, reference block 1/1, shape 6/16, index chunk 3/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.445s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1405/70169 (2.00%)
+Masked positions (query): 1254462/2000000324 (0.06%)
+Masked positions (target): 3881/938491 (0.41%)
+Searching alignments...  [0.083s]
+Processing query block 2, reference block 1/1, shape 6/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.363s]
+Computing hash join...  [0.095s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1452/69299 (2.10%)
+Masked positions (query): 1376301/2000000324 (0.07%)
+Masked positions (target): 4116/938491 (0.44%)
+Searching alignments...  [0.081s]
+Processing query block 2, reference block 1/1, shape 7/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.345s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1498/69735 (2.15%)
+Masked positions (query): 1431949/2000000324 (0.07%)
+Masked positions (target): 4326/938491 (0.46%)
+Searching alignments...  [0.076s]
+Processing query block 2, reference block 1/1, shape 7/16, index chunk 2/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.401s]
+Computing hash join...  [0.085s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1439/69788 (2.06%)
+Masked positions (query): 1271668/2000000324 (0.06%)
+Masked positions (target): 4575/938491 (0.49%)
+Searching alignments...  [0.076s]
+Processing query block 2, reference block 1/1, shape 7/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.435s]
+Computing hash join...  [0.088s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1445/70162 (2.06%)
+Masked positions (query): 1238558/2000000324 (0.06%)
+Masked positions (target): 3624/938491 (0.39%)
+Searching alignments...  [0.075s]
+Processing query block 2, reference block 1/1, shape 7/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.335s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1523/69395 (2.19%)
+Masked positions (query): 1326530/2000000324 (0.07%)
+Masked positions (target): 4436/938491 (0.47%)
+Searching alignments...  [0.075s]
+Processing query block 2, reference block 1/1, shape 8/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.341s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1498/69802 (2.15%)
+Masked positions (query): 1516582/2000000324 (0.08%)
+Masked positions (target): 4322/938491 (0.46%)
+Searching alignments...  [0.079s]
+Processing query block 2, reference block 1/1, shape 8/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.417s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1381/69961 (1.97%)
+Masked positions (query): 1273410/2000000324 (0.06%)
+Masked positions (target): 3885/938491 (0.41%)
+Searching alignments...  [0.081s]
+Processing query block 2, reference block 1/1, shape 8/16, index chunk 3/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.465s]
+Computing hash join...  [0.088s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1443/69714 (2.07%)
+Masked positions (query): 1274204/2000000324 (0.06%)
+Masked positions (target): 3804/938491 (0.41%)
+Searching alignments...  [0.078s]
+Processing query block 2, reference block 1/1, shape 8/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.348s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1514/69451 (2.18%)
+Masked positions (query): 1371843/2000000324 (0.07%)
+Masked positions (target): 3936/938491 (0.42%)
+Searching alignments...  [0.079s]
+Processing query block 2, reference block 1/1, shape 9/16, index chunk 1/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.37s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1539/70084 (2.20%)
+Masked positions (query): 1667733/2000000324 (0.08%)
+Masked positions (target): 6121/938491 (0.65%)
+Searching alignments...  [0.083s]
+Processing query block 2, reference block 1/1, shape 9/16, index chunk 2/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.444s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1431/69839 (2.05%)
+Masked positions (query): 1366329/2000000324 (0.07%)
+Masked positions (target): 4177/938491 (0.45%)
+Searching alignments...  [0.083s]
+Processing query block 2, reference block 1/1, shape 9/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.452s]
+Computing hash join...  [0.095s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1375/69842 (1.97%)
+Masked positions (query): 1282593/2000000324 (0.06%)
+Masked positions (target): 4210/938491 (0.45%)
+Searching alignments...  [0.085s]
+Processing query block 2, reference block 1/1, shape 9/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.362s]
+Computing hash join...  [0.095s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1527/69725 (2.19%)
+Masked positions (query): 1475192/2000000324 (0.07%)
+Masked positions (target): 4567/938491 (0.49%)
+Searching alignments...  [0.087s]
+Processing query block 2, reference block 1/1, shape 10/16, index chunk 1/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.327s]
+Computing hash join...  [0.083s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1444/70057 (2.06%)
+Masked positions (query): 1321356/2000000324 (0.07%)
+Masked positions (target): 3911/938491 (0.42%)
+Searching alignments...  [0.073s]
+Processing query block 2, reference block 1/1, shape 10/16, index chunk 2/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.391s]
+Computing hash join...  [0.083s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1440/69209 (2.08%)
+Masked positions (query): 1203453/2000000324 (0.06%)
+Masked positions (target): 4290/938491 (0.46%)
+Searching alignments...  [0.075s]
+Processing query block 2, reference block 1/1, shape 10/16, index chunk 3/4.
+Building reference seed array...  [0.02s]
+Building query seed array...  [0.417s]
+Computing hash join...  [0.084s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1460/69588 (2.10%)
+Masked positions (query): 1184750/2000000324 (0.06%)
+Masked positions (target): 4973/938491 (0.53%)
+Searching alignments...  [0.073s]
+Processing query block 2, reference block 1/1, shape 10/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.344s]
+Computing hash join...  [0.084s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1485/69843 (2.13%)
+Masked positions (query): 1227184/2000000324 (0.06%)
+Masked positions (target): 4006/938491 (0.43%)
+Searching alignments...  [0.075s]
+Processing query block 2, reference block 1/1, shape 11/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.368s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1548/69525 (2.23%)
+Masked positions (query): 1548438/2000000324 (0.08%)
+Masked positions (target): 4245/938491 (0.45%)
+Searching alignments...  [0.081s]
+Processing query block 2, reference block 1/1, shape 11/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.43s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1478/69245 (2.13%)
+Masked positions (query): 1355853/2000000324 (0.07%)
+Masked positions (target): 4231/938491 (0.45%)
+Searching alignments...  [0.083s]
+Processing query block 2, reference block 1/1, shape 11/16, index chunk 3/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.443s]
+Computing hash join...  [0.092s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1472/70574 (2.09%)
+Masked positions (query): 1297529/2000000324 (0.06%)
+Masked positions (target): 3542/938491 (0.38%)
+Searching alignments...  [0.081s]
+Processing query block 2, reference block 1/1, shape 11/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.362s]
+Computing hash join...  [0.089s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1544/69594 (2.22%)
+Masked positions (query): 1441219/2000000324 (0.07%)
+Masked positions (target): 4603/938491 (0.49%)
+Searching alignments...  [0.082s]
+Processing query block 2, reference block 1/1, shape 12/16, index chunk 1/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.357s]
+Computing hash join...  [0.082s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1462/69494 (2.10%)
+Masked positions (query): 1360708/2000000324 (0.07%)
+Masked positions (target): 3593/938491 (0.38%)
+Searching alignments...  [0.074s]
+Processing query block 2, reference block 1/1, shape 12/16, index chunk 2/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.424s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1474/69481 (2.12%)
+Masked positions (query): 1237296/2000000324 (0.06%)
+Masked positions (target): 3834/938491 (0.41%)
+Searching alignments...  [0.072s]
+Processing query block 2, reference block 1/1, shape 12/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.46s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.006s]
+Masked seeds: 1358/69299 (1.96%)
+Masked positions (query): 1103630/2000000324 (0.06%)
+Masked positions (target): 3866/938491 (0.41%)
+Searching alignments...  [0.073s]
+Processing query block 2, reference block 1/1, shape 12/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.353s]
+Computing hash join...  [0.082s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1464/69660 (2.10%)
+Masked positions (query): 1254588/2000000324 (0.06%)
+Masked positions (target): 4233/938491 (0.45%)
+Searching alignments...  [0.072s]
+Processing query block 2, reference block 1/1, shape 13/16, index chunk 1/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.357s]
+Computing hash join...  [0.084s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1472/69930 (2.10%)
+Masked positions (query): 1389221/2000000324 (0.07%)
+Masked positions (target): 4484/938491 (0.48%)
+Searching alignments...  [0.075s]
+Processing query block 2, reference block 1/1, shape 13/16, index chunk 2/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.406s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1409/69440 (2.03%)
+Masked positions (query): 1187202/2000000324 (0.06%)
+Masked positions (target): 4859/938491 (0.52%)
+Searching alignments...  [0.073s]
+Processing query block 2, reference block 1/1, shape 13/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.472s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.014s]
+Masked seeds: 1440/69379 (2.08%)
+Masked positions (query): 1135044/2000000324 (0.06%)
+Masked positions (target): 4538/938491 (0.48%)
+Searching alignments...  [0.094s]
+Processing query block 2, reference block 1/1, shape 13/16, index chunk 4/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.369s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1524/69237 (2.20%)
+Masked positions (query): 1270268/2000000324 (0.06%)
+Masked positions (target): 5014/938491 (0.53%)
+Searching alignments...  [0.095s]
+Processing query block 2, reference block 1/1, shape 14/16, index chunk 1/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.369s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1583/69673 (2.27%)
+Masked positions (query): 1515267/2000000324 (0.08%)
+Masked positions (target): 4543/938491 (0.48%)
+Searching alignments...  [0.095s]
+Processing query block 2, reference block 1/1, shape 14/16, index chunk 2/4.
+Building reference seed array...  [0.016s]
+Building query seed array...  [0.431s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.011s]
+Masked seeds: 1524/69537 (2.19%)
+Masked positions (query): 1321789/2000000324 (0.07%)
+Masked positions (target): 5073/938491 (0.54%)
+Searching alignments...  [0.098s]
+Processing query block 2, reference block 1/1, shape 14/16, index chunk 3/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.461s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1500/69512 (2.16%)
+Masked positions (query): 1268561/2000000324 (0.06%)
+Masked positions (target): 4933/938491 (0.53%)
+Searching alignments...  [0.1s]
+Processing query block 2, reference block 1/1, shape 14/16, index chunk 4/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.367s]
+Computing hash join...  [0.089s]
+Masking low complexity seeds...  [0.012s]
+Masked seeds: 1554/69075 (2.25%)
+Masked positions (query): 1395474/2000000324 (0.07%)
+Masked positions (target): 4827/938491 (0.51%)
+Searching alignments...  [0.101s]
+Processing query block 2, reference block 1/1, shape 15/16, index chunk 1/4.
+Building reference seed array...  [0.012s]
+Building query seed array...  [0.404s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.015s]
+Masked seeds: 1509/69413 (2.17%)
+Masked positions (query): 1549536/2000000324 (0.08%)
+Masked positions (target): 4008/938491 (0.43%)
+Searching alignments...  [0.107s]
+Processing query block 2, reference block 1/1, shape 15/16, index chunk 2/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.461s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.011s]
+Masked seeds: 1457/69720 (2.09%)
+Masked positions (query): 1301139/2000000324 (0.07%)
+Masked positions (target): 3787/938491 (0.40%)
+Searching alignments...  [0.096s]
+Processing query block 2, reference block 1/1, shape 15/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.451s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.014s]
+Masked seeds: 1437/69732 (2.06%)
+Masked positions (query): 1275922/2000000324 (0.06%)
+Masked positions (target): 4310/938491 (0.46%)
+Searching alignments...  [0.097s]
+Processing query block 2, reference block 1/1, shape 15/16, index chunk 4/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.374s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1579/69933 (2.26%)
+Masked positions (query): 1430241/2000000324 (0.07%)
+Masked positions (target): 5533/938491 (0.59%)
+Searching alignments...  [0.099s]
+Processing query block 2, reference block 1/1, shape 16/16, index chunk 1/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.375s]
+Computing hash join...  [0.085s]
+Masking low complexity seeds...  [0.014s]
+Masked seeds: 1568/69505 (2.26%)
+Masked positions (query): 1453638/2000000324 (0.07%)
+Masked positions (target): 4401/938491 (0.47%)
+Searching alignments...  [0.093s]
+Processing query block 2, reference block 1/1, shape 16/16, index chunk 2/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.413s]
+Computing hash join...  [0.085s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1444/69091 (2.09%)
+Masked positions (query): 1253382/2000000324 (0.06%)
+Masked positions (target): 4766/938491 (0.51%)
+Searching alignments...  [0.1s]
+Processing query block 2, reference block 1/1, shape 16/16, index chunk 3/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.464s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.011s]
+Masked seeds: 1455/69380 (2.10%)
+Masked positions (query): 1192885/2000000324 (0.06%)
+Masked positions (target): 3938/938491 (0.42%)
+Searching alignments...  [0.085s]
+Processing query block 2, reference block 1/1, shape 16/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.366s]
+Computing hash join...  [0.084s]
+Masking low complexity seeds...  [0.013s]
+Masked seeds: 1618/69545 (2.33%)
+Masked positions (query): 1376474/2000000324 (0.07%)
+Masked positions (target): 4054/938491 (0.43%)
+Searching alignments...  [0.088s]
+Deallocating buffers...  [0s]
+Clearing query masking...  [0.641s]
+Computing alignments...  [23.249s]
+Deallocating reference...  [0s]
+Loading reference sequences...  [0s]
+Deallocating buffers...  [0.007s]
+Deallocating queries...  [0.011s]
+Loading query sequences...  [13.7s]
+Sequences = 44434626, letters = 1880485088, average length = 42
+Masking queries...  [2.67s]
+Building query histograms...  [5.515s]
+Allocating buffers...  [0.012s]
+Loading reference sequences...  [0.001s]
+Sequences = 2979, letters = 938491, average length = 315
+Masking reference...  [0.005s]
+Initializing temporary storage...  [0.069s]
+Building reference histograms...  [0.013s]
+Allocating buffers...  [0.01s]
+Processing query block 3, reference block 1/1, shape 1/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.395s]
+Computing hash join...  [0.103s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1483/69501 (2.13%)
+Masked positions (query): 1686538/1880485088 (0.09%)
+Masked positions (target): 4438/938491 (0.47%)
+Searching alignments...  [0.091s]
+Processing query block 3, reference block 1/1, shape 1/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.453s]
+Computing hash join...  [0.103s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1394/69586 (2.00%)
+Masked positions (query): 1373506/1880485088 (0.07%)
+Masked positions (target): 3822/938491 (0.41%)
+Searching alignments...  [0.09s]
+Processing query block 3, reference block 1/1, shape 1/16, index chunk 3/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.48s]
+Computing hash join...  [0.102s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1374/69974 (1.96%)
+Masked positions (query): 1305600/1880485088 (0.07%)
+Masked positions (target): 4916/938491 (0.52%)
+Searching alignments...  [0.09s]
+Processing query block 3, reference block 1/1, shape 1/16, index chunk 4/4.
+Building reference seed array...  [0.015s]
+Building query seed array...  [0.372s]
+Computing hash join...  [0.105s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1451/69698 (2.08%)
+Masked positions (query): 1427365/1880485088 (0.08%)
+Masked positions (target): 4034/938491 (0.43%)
+Searching alignments...  [0.087s]
+Processing query block 3, reference block 1/1, shape 2/16, index chunk 1/4.
+Building reference seed array...  [0.011s]
+Building query seed array...  [0.327s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1482/69693 (2.13%)
+Masked positions (query): 1377439/1880485088 (0.07%)
+Masked positions (target): 4627/938491 (0.49%)
+Searching alignments...  [0.073s]
+Processing query block 3, reference block 1/1, shape 2/16, index chunk 2/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.365s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1375/69565 (1.98%)
+Masked positions (query): 1195300/1880485088 (0.06%)
+Masked positions (target): 4352/938491 (0.46%)
+Searching alignments...  [0.076s]
+Processing query block 3, reference block 1/1, shape 2/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.413s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1385/69564 (1.99%)
+Masked positions (query): 1124001/1880485088 (0.06%)
+Masked positions (target): 4053/938491 (0.43%)
+Searching alignments...  [0.077s]
+Processing query block 3, reference block 1/1, shape 2/16, index chunk 4/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.339s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1543/69318 (2.23%)
+Masked positions (query): 1298178/1880485088 (0.07%)
+Masked positions (target): 4897/938491 (0.52%)
+Searching alignments...  [0.079s]
+Processing query block 3, reference block 1/1, shape 3/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.407s]
+Computing hash join...  [0.1s]
+Masking low complexity seeds...  [0.01s]
+Masked seeds: 1480/69931 (2.12%)
+Masked positions (query): 1605902/1880485088 (0.09%)
+Masked positions (target): 4314/938491 (0.46%)
+Searching alignments...  [0.086s]
+Processing query block 3, reference block 1/1, shape 3/16, index chunk 2/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.426s]
+Computing hash join...  [0.099s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1467/69585 (2.11%)
+Masked positions (query): 1420924/1880485088 (0.08%)
+Masked positions (target): 4428/938491 (0.47%)
+Searching alignments...  [0.086s]
+Processing query block 3, reference block 1/1, shape 3/16, index chunk 3/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.476s]
+Computing hash join...  [0.102s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1391/70317 (1.98%)
+Masked positions (query): 1280137/1880485088 (0.07%)
+Masked positions (target): 4015/938491 (0.43%)
+Searching alignments...  [0.087s]
+Processing query block 3, reference block 1/1, shape 3/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.372s]
+Computing hash join...  [0.098s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1446/69355 (2.08%)
+Masked positions (query): 1372957/1880485088 (0.07%)
+Masked positions (target): 3815/938491 (0.41%)
+Searching alignments...  [0.088s]
+Processing query block 3, reference block 1/1, shape 4/16, index chunk 1/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.362s]
+Computing hash join...  [0.095s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1444/69945 (2.06%)
+Masked positions (query): 1485707/1880485088 (0.08%)
+Masked positions (target): 4157/938491 (0.44%)
+Searching alignments...  [0.085s]
+Processing query block 3, reference block 1/1, shape 4/16, index chunk 2/4.
+Building reference seed array...  [0.022s]
+Building query seed array...  [0.434s]
+Computing hash join...  [0.097s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1453/70013 (2.08%)
+Masked positions (query): 1332842/1880485088 (0.07%)
+Masked positions (target): 5050/938491 (0.54%)
+Searching alignments...  [0.081s]
+Processing query block 3, reference block 1/1, shape 4/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.471s]
+Computing hash join...  [0.097s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1421/69863 (2.03%)
+Masked positions (query): 1248429/1880485088 (0.07%)
+Masked positions (target): 4068/938491 (0.43%)
+Searching alignments...  [0.085s]
+Processing query block 3, reference block 1/1, shape 4/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.362s]
+Computing hash join...  [0.096s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1507/69546 (2.17%)
+Masked positions (query): 1395018/1880485088 (0.07%)
+Masked positions (target): 4876/938491 (0.52%)
+Searching alignments...  [0.081s]
+Processing query block 3, reference block 1/1, shape 5/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.355s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1534/69069 (2.22%)
+Masked positions (query): 1473459/1880485088 (0.08%)
+Masked positions (target): 4565/938491 (0.49%)
+Searching alignments...  [0.078s]
+Processing query block 3, reference block 1/1, shape 5/16, index chunk 2/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.411s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1460/69682 (2.10%)
+Masked positions (query): 1250479/1880485088 (0.07%)
+Masked positions (target): 4533/938491 (0.48%)
+Searching alignments...  [0.08s]
+Processing query block 3, reference block 1/1, shape 5/16, index chunk 3/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.436s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1439/69266 (2.08%)
+Masked positions (query): 1206570/1880485088 (0.06%)
+Masked positions (target): 4581/938491 (0.49%)
+Searching alignments...  [0.076s]
+Processing query block 3, reference block 1/1, shape 5/16, index chunk 4/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.348s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1535/68414 (2.24%)
+Masked positions (query): 1307974/1880485088 (0.07%)
+Masked positions (target): 4255/938491 (0.45%)
+Searching alignments...  [0.078s]
+Processing query block 3, reference block 1/1, shape 6/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.373s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1528/69494 (2.20%)
+Masked positions (query): 1494224/1880485088 (0.08%)
+Masked positions (target): 4375/938491 (0.47%)
+Searching alignments...  [0.078s]
+Processing query block 3, reference block 1/1, shape 6/16, index chunk 2/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.423s]
+Computing hash join...  [0.095s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1449/70012 (2.07%)
+Masked positions (query): 1302367/1880485088 (0.07%)
+Masked positions (target): 5012/938491 (0.53%)
+Searching alignments...  [0.08s]
+Processing query block 3, reference block 1/1, shape 6/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.475s]
+Computing hash join...  [0.096s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1405/70037 (2.01%)
+Masked positions (query): 1198263/1880485088 (0.06%)
+Masked positions (target): 3881/938491 (0.41%)
+Searching alignments...  [0.08s]
+Processing query block 3, reference block 1/1, shape 6/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.364s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1452/69242 (2.10%)
+Masked positions (query): 1317033/1880485088 (0.07%)
+Masked positions (target): 4116/938491 (0.44%)
+Searching alignments...  [0.079s]
+Processing query block 3, reference block 1/1, shape 7/16, index chunk 1/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.332s]
+Computing hash join...  [0.088s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1498/69686 (2.15%)
+Masked positions (query): 1373164/1880485088 (0.07%)
+Masked positions (target): 4326/938491 (0.46%)
+Searching alignments...  [0.072s]
+Processing query block 3, reference block 1/1, shape 7/16, index chunk 2/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.388s]
+Computing hash join...  [0.089s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1439/69685 (2.07%)
+Masked positions (query): 1217691/1880485088 (0.06%)
+Masked positions (target): 4575/938491 (0.49%)
+Searching alignments...  [0.077s]
+Processing query block 3, reference block 1/1, shape 7/16, index chunk 3/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.417s]
+Computing hash join...  [0.088s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1444/70015 (2.06%)
+Masked positions (query): 1184712/1880485088 (0.06%)
+Masked positions (target): 3623/938491 (0.39%)
+Searching alignments...  [0.076s]
+Processing query block 3, reference block 1/1, shape 7/16, index chunk 4/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.314s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1523/69297 (2.20%)
+Masked positions (query): 1273458/1880485088 (0.07%)
+Masked positions (target): 4436/938491 (0.47%)
+Searching alignments...  [0.071s]
+Processing query block 3, reference block 1/1, shape 8/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.344s]
+Computing hash join...  [0.092s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1498/69681 (2.15%)
+Masked positions (query): 1455092/1880485088 (0.08%)
+Masked positions (target): 4322/938491 (0.46%)
+Searching alignments...  [0.076s]
+Processing query block 3, reference block 1/1, shape 8/16, index chunk 2/4.
+Building reference seed array...  [0.018s]
+Building query seed array...  [0.396s]
+Computing hash join...  [0.092s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1383/69932 (1.98%)
+Masked positions (query): 1220444/1880485088 (0.06%)
+Masked positions (target): 3887/938491 (0.41%)
+Searching alignments...  [0.078s]
+Processing query block 3, reference block 1/1, shape 8/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.413s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1444/69601 (2.07%)
+Masked positions (query): 1218062/1880485088 (0.06%)
+Masked positions (target): 3807/938491 (0.41%)
+Searching alignments...  [0.08s]
+Processing query block 3, reference block 1/1, shape 8/16, index chunk 4/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.343s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1515/69350 (2.18%)
+Masked positions (query): 1311152/1880485088 (0.07%)
+Masked positions (target): 3937/938491 (0.42%)
+Searching alignments...  [0.077s]
+Processing query block 3, reference block 1/1, shape 9/16, index chunk 1/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.35s]
+Computing hash join...  [0.096s]
+Masking low complexity seeds...  [0.011s]
+Masked seeds: 1541/70005 (2.20%)
+Masked positions (query): 1604019/1880485088 (0.09%)
+Masked positions (target): 6140/938491 (0.65%)
+Searching alignments...  [0.083s]
+Processing query block 3, reference block 1/1, shape 9/16, index chunk 2/4.
+Building reference seed array...  [0.02s]
+Building query seed array...  [0.412s]
+Computing hash join...  [0.097s]
+Masking low complexity seeds...  [0.01s]
+Masked seeds: 1430/69796 (2.05%)
+Masked positions (query): 1306671/1880485088 (0.07%)
+Masked positions (target): 4174/938491 (0.44%)
+Searching alignments...  [0.083s]
+Processing query block 3, reference block 1/1, shape 9/16, index chunk 3/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.436s]
+Computing hash join...  [0.1s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1375/69733 (1.97%)
+Masked positions (query): 1229954/1880485088 (0.07%)
+Masked positions (target): 4210/938491 (0.45%)
+Searching alignments...  [0.082s]
+Processing query block 3, reference block 1/1, shape 9/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.337s]
+Computing hash join...  [0.099s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1527/69588 (2.19%)
+Masked positions (query): 1413322/1880485088 (0.08%)
+Masked positions (target): 4567/938491 (0.49%)
+Searching alignments...  [0.087s]
+Processing query block 3, reference block 1/1, shape 10/16, index chunk 1/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.329s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1444/69919 (2.07%)
+Masked positions (query): 1265554/1880485088 (0.07%)
+Masked positions (target): 3911/938491 (0.42%)
+Searching alignments...  [0.072s]
+Processing query block 3, reference block 1/1, shape 10/16, index chunk 2/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.359s]
+Computing hash join...  [0.084s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1441/69129 (2.08%)
+Masked positions (query): 1148529/1880485088 (0.06%)
+Masked positions (target): 4291/938491 (0.46%)
+Searching alignments...  [0.073s]
+Processing query block 3, reference block 1/1, shape 10/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.406s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1461/69528 (2.10%)
+Masked positions (query): 1136798/1880485088 (0.06%)
+Masked positions (target): 4974/938491 (0.53%)
+Searching alignments...  [0.071s]
+Processing query block 3, reference block 1/1, shape 10/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.307s]
+Computing hash join...  [0.085s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1485/69697 (2.13%)
+Masked positions (query): 1175893/1880485088 (0.06%)
+Masked positions (target): 4006/938491 (0.43%)
+Searching alignments...  [0.072s]
+Processing query block 3, reference block 1/1, shape 11/16, index chunk 1/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.351s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1548/69446 (2.23%)
+Masked positions (query): 1487420/1880485088 (0.08%)
+Masked positions (target): 4245/938491 (0.45%)
+Searching alignments...  [0.079s]
+Processing query block 3, reference block 1/1, shape 11/16, index chunk 2/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.426s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1480/69187 (2.14%)
+Masked positions (query): 1298124/1880485088 (0.07%)
+Masked positions (target): 4234/938491 (0.45%)
+Searching alignments...  [0.076s]
+Processing query block 3, reference block 1/1, shape 11/16, index chunk 3/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.45s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1473/70439 (2.09%)
+Masked positions (query): 1237886/1880485088 (0.07%)
+Masked positions (target): 3543/938491 (0.38%)
+Searching alignments...  [0.079s]
+Processing query block 3, reference block 1/1, shape 11/16, index chunk 4/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.346s]
+Computing hash join...  [0.094s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1544/69466 (2.22%)
+Masked positions (query): 1380688/1880485088 (0.07%)
+Masked positions (target): 4603/938491 (0.49%)
+Searching alignments...  [0.079s]
+Processing query block 3, reference block 1/1, shape 12/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.348s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1462/69436 (2.11%)
+Masked positions (query): 1302604/1880485088 (0.07%)
+Masked positions (target): 3593/938491 (0.38%)
+Searching alignments...  [0.072s]
+Processing query block 3, reference block 1/1, shape 12/16, index chunk 2/4.
+Building reference seed array...  [0.009s]
+Building query seed array...  [0.396s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1474/69352 (2.13%)
+Masked positions (query): 1181070/1880485088 (0.06%)
+Masked positions (target): 3834/938491 (0.41%)
+Searching alignments...  [0.074s]
+Processing query block 3, reference block 1/1, shape 12/16, index chunk 3/4.
+Building reference seed array...  [0.014s]
+Building query seed array...  [0.418s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1358/69211 (1.96%)
+Masked positions (query): 1054207/1880485088 (0.06%)
+Masked positions (target): 3866/938491 (0.41%)
+Searching alignments...  [0.075s]
+Processing query block 3, reference block 1/1, shape 12/16, index chunk 4/4.
+Building reference seed array...  [0.01s]
+Building query seed array...  [0.332s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1464/69618 (2.10%)
+Masked positions (query): 1203002/1880485088 (0.06%)
+Masked positions (target): 4233/938491 (0.45%)
+Searching alignments...  [0.072s]
+Processing query block 3, reference block 1/1, shape 13/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.342s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1472/69805 (2.11%)
+Masked positions (query): 1332855/1880485088 (0.07%)
+Masked positions (target): 4484/938491 (0.48%)
+Searching alignments...  [0.071s]
+Processing query block 3, reference block 1/1, shape 13/16, index chunk 2/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.397s]
+Computing hash join...  [0.087s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1408/69336 (2.03%)
+Masked positions (query): 1137793/1880485088 (0.06%)
+Masked positions (target): 4858/938491 (0.52%)
+Searching alignments...  [0.072s]
+Processing query block 3, reference block 1/1, shape 13/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.422s]
+Computing hash join...  [0.085s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1440/69307 (2.08%)
+Masked positions (query): 1086143/1880485088 (0.06%)
+Masked positions (target): 4538/938491 (0.48%)
+Searching alignments...  [0.074s]
+Processing query block 3, reference block 1/1, shape 13/16, index chunk 4/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.332s]
+Computing hash join...  [0.085s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1525/69061 (2.21%)
+Masked positions (query): 1214188/1880485088 (0.06%)
+Masked positions (target): 5015/938491 (0.53%)
+Searching alignments...  [0.071s]
+Processing query block 3, reference block 1/1, shape 14/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.333s]
+Computing hash join...  [0.09s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1583/69604 (2.27%)
+Masked positions (query): 1453330/1880485088 (0.08%)
+Masked positions (target): 4543/938491 (0.48%)
+Searching alignments...  [0.076s]
+Processing query block 3, reference block 1/1, shape 14/16, index chunk 2/4.
+Building reference seed array...  [0.021s]
+Building query seed array...  [0.407s]
+Computing hash join...  [0.088s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1525/69442 (2.20%)
+Masked positions (query): 1265927/1880485088 (0.07%)
+Masked positions (target): 5074/938491 (0.54%)
+Searching alignments...  [0.073s]
+Processing query block 3, reference block 1/1, shape 14/16, index chunk 3/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.423s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1500/69434 (2.16%)
+Masked positions (query): 1209359/1880485088 (0.06%)
+Masked positions (target): 4933/938491 (0.53%)
+Searching alignments...  [0.075s]
+Processing query block 3, reference block 1/1, shape 14/16, index chunk 4/4.
+Building reference seed array...  [0.017s]
+Building query seed array...  [0.328s]
+Computing hash join...  [0.088s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1555/68948 (2.26%)
+Masked positions (query): 1332503/1880485088 (0.07%)
+Masked positions (target): 4833/938491 (0.51%)
+Searching alignments...  [0.073s]
+Processing query block 3, reference block 1/1, shape 15/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.348s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1509/69353 (2.18%)
+Masked positions (query): 1486766/1880485088 (0.08%)
+Masked positions (target): 4008/938491 (0.43%)
+Searching alignments...  [0.078s]
+Processing query block 3, reference block 1/1, shape 15/16, index chunk 2/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.402s]
+Computing hash join...  [0.093s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1458/69609 (2.09%)
+Masked positions (query): 1247039/1880485088 (0.07%)
+Masked positions (target): 3788/938491 (0.40%)
+Searching alignments...  [0.078s]
+Processing query block 3, reference block 1/1, shape 15/16, index chunk 3/4.
+Building reference seed array...  [0.022s]
+Building query seed array...  [0.432s]
+Computing hash join...  [0.095s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1437/69632 (2.06%)
+Masked positions (query): 1219169/1880485088 (0.06%)
+Masked positions (target): 4310/938491 (0.46%)
+Searching alignments...  [0.076s]
+Processing query block 3, reference block 1/1, shape 15/16, index chunk 4/4.
+Building reference seed array...  [0.019s]
+Building query seed array...  [0.319s]
+Computing hash join...  [0.091s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1579/69863 (2.26%)
+Masked positions (query): 1368054/1880485088 (0.07%)
+Masked positions (target): 5533/938491 (0.59%)
+Searching alignments...  [0.077s]
+Processing query block 3, reference block 1/1, shape 16/16, index chunk 1/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.318s]
+Computing hash join...  [0.085s]
+Masking low complexity seeds...  [0.009s]
+Masked seeds: 1568/69404 (2.26%)
+Masked positions (query): 1393332/1880485088 (0.07%)
+Masked positions (target): 4402/938491 (0.47%)
+Searching alignments...  [0.074s]
+Processing query block 3, reference block 1/1, shape 16/16, index chunk 2/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.372s]
+Computing hash join...  [0.084s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1443/69030 (2.09%)
+Masked positions (query): 1200942/1880485088 (0.06%)
+Masked positions (target): 4765/938491 (0.51%)
+Searching alignments...  [0.073s]
+Processing query block 3, reference block 1/1, shape 16/16, index chunk 3/4.
+Building reference seed array...  [0.007s]
+Building query seed array...  [0.409s]
+Computing hash join...  [0.085s]
+Masking low complexity seeds...  [0.007s]
+Masked seeds: 1454/69318 (2.10%)
+Masked positions (query): 1140025/1880485088 (0.06%)
+Masked positions (target): 3937/938491 (0.42%)
+Searching alignments...  [0.072s]
+Processing query block 3, reference block 1/1, shape 16/16, index chunk 4/4.
+Building reference seed array...  [0.008s]
+Building query seed array...  [0.333s]
+Computing hash join...  [0.086s]
+Masking low complexity seeds...  [0.008s]
+Masked seeds: 1617/69459 (2.33%)
+Masked positions (query): 1313370/1880485088 (0.07%)
+Masked positions (target): 4053/938491 (0.43%)
+Searching alignments...  [0.07s]
+Deallocating buffers...  [0s]
+Clearing query masking...  [0.857s]
+Computing alignments...  [24.374s]
+Deallocating reference...  [0s]
+Loading reference sequences...  [0s]
+Deallocating buffers...  [0.004s]
+Deallocating queries...  [0.007s]
+Loading query sequences...  [0s]
+Closing the input file...  [0s]
+Closing the output file...  [0.031s]
+Cleaning up...  [0s]
+Total time = 258.988s
+Temporary disk space used (search): 0.0263718 GB
+Reported 89044 pairwise alignments, 89044 HSPs.
+15987 queries aligned.
+2022-02-28 23:51:41,885 - INFO - Found 89043 aligned sequences
+2022-02-28 23:53:54,113 - INFO - Set distance of 20, find clusters
+  0%|          | 0/15987 [00:00<?, ?it/s]  0%|          | 21/15987 [00:00<01:16, 208.77it/s]  0%|          | 42/15987 [00:00<01:16, 207.38it/s]  0%|          | 65/15987 [00:00<01:13, 217.15it/s]  1%|          | 87/15987 [00:00<01:13, 215.42it/s]  1%|          | 116/15987 [00:00<01:07, 235.10it/s]  1%|          | 140/15987 [00:00<01:10, 223.62it/s]  1%|          | 163/15987 [00:00<01:18, 202.69it/s]  1%|          | 184/15987 [00:00<01:19, 199.00it/s]  1%|▏         | 205/15987 [00:00<01:19, 197.41it/s]  1%|▏         | 225/15987 [00:01<01:24, 185.94it/s]  2%|▏         | 253/15987 [00:01<01:14, 210.79it/s]  2%|▏         | 275/15987 [00:01<01:18, 199.21it/s]  2%|▏         | 296/15987 [00:01<01:23, 189.02it/s]  2%|▏         | 316/15987 [00:01<01:29, 174.51it/s]  2%|▏         | 340/15987 [00:01<01:22, 190.71it/s]  2%|▏         | 364/15987 [00:01<01:17, 202.56it/s]  2%|▏         | 385/15987 [00:01<01:17, 200.49it/s]  3%|▎         | 408/15987 [00:02<01:15, 205.91it/s]  3%|▎         | 429/15987 [00:02<01:20, 194.17it/s]  3%|▎         | 454/15987 [00:02<01:14, 207.92it/s]  3%|▎         | 478/15987 [00:02<01:12, 213.56it/s]  3%|▎         | 500/15987 [00:02<01:13, 211.25it/s]  3%|▎         | 522/15987 [00:02<01:13, 210.35it/s]  3%|▎         | 545/15987 [00:02<01:12, 213.58it/s]  4%|▎         | 567/15987 [00:02<01:14, 206.46it/s]  4%|▎         | 588/15987 [00:02<01:15, 202.78it/s]  4%|▍         | 610/15987 [00:02<01:14, 205.25it/s]  4%|▍         | 631/15987 [00:03<01:18, 195.21it/s]  4%|▍         | 652/15987 [00:03<01:17, 198.52it/s]  4%|▍         | 672/15987 [00:03<01:17, 197.67it/s]  4%|▍         | 692/15987 [00:03<01:19, 191.63it/s]  4%|▍         | 716/15987 [00:03<01:14, 205.06it/s]  5%|▍         | 737/15987 [00:03<01:19, 192.07it/s]  5%|▍         | 757/15987 [00:03<01:22, 185.53it/s]  5%|▍         | 778/15987 [00:03<01:19, 190.46it/s]  5%|▌         | 800/15987 [00:03<01:16, 197.79it/s]  5%|▌         | 821/15987 [00:04<01:15, 200.20it/s]  5%|▌         | 844/15987 [00:04<01:12, 207.46it/s]  5%|▌         | 872/15987 [00:04<01:06, 228.30it/s]  6%|▌         | 896/15987 [00:04<01:05, 231.68it/s]  6%|▌         | 920/15987 [00:04<01:04, 233.48it/s]  6%|▌         | 949/15987 [00:04<01:00, 248.93it/s]  6%|▌         | 974/15987 [00:04<01:02, 241.66it/s]  6%|▋         | 1000/15987 [00:04<01:00, 246.40it/s]  6%|▋         | 1025/15987 [00:04<01:05, 229.01it/s]  7%|▋         | 1049/15987 [00:05<01:11, 208.98it/s]  7%|▋         | 1072/15987 [00:05<01:09, 213.99it/s]  7%|▋         | 1097/15987 [00:05<01:07, 219.73it/s]  7%|▋         | 1120/15987 [00:05<01:08, 216.70it/s]  7%|▋         | 1142/15987 [00:05<01:12, 205.08it/s]  7%|▋         | 1165/15987 [00:05<01:10, 209.27it/s]  7%|▋         | 1188/15987 [00:05<01:09, 212.26it/s]  8%|▊         | 1218/15987 [00:05<01:02, 235.50it/s]  8%|▊         | 1242/15987 [00:05<01:08, 216.57it/s]  8%|▊         | 1270/15987 [00:06<01:03, 230.79it/s]  8%|▊         | 1294/15987 [00:06<01:06, 222.24it/s]  8%|▊         | 1317/15987 [00:06<01:06, 220.41it/s]  8%|▊         | 1340/15987 [00:06<01:05, 222.82it/s]  9%|▊         | 1365/15987 [00:06<01:04, 227.75it/s]  9%|▊         | 1390/15987 [00:06<01:03, 230.69it/s]  9%|▉         | 1414/15987 [00:06<01:09, 208.79it/s]  9%|▉         | 1440/15987 [00:06<01:06, 218.52it/s]  9%|▉         | 1463/15987 [00:06<01:08, 210.55it/s]  9%|▉         | 1487/15987 [00:07<01:06, 217.14it/s]  9%|▉         | 1513/15987 [00:07<01:03, 226.25it/s] 10%|▉         | 1536/15987 [00:07<01:07, 212.74it/s] 10%|▉         | 1558/15987 [00:07<01:10, 204.01it/s] 10%|▉         | 1579/15987 [00:07<01:14, 193.75it/s] 10%|█         | 1599/15987 [00:07<01:16, 188.97it/s] 10%|█         | 1620/15987 [00:07<01:14, 193.00it/s] 10%|█         | 1640/15987 [00:07<01:14, 192.63it/s] 10%|█         | 1660/15987 [00:07<01:15, 190.04it/s] 11%|█         | 1680/15987 [00:08<01:16, 187.53it/s] 11%|█         | 1702/15987 [00:08<01:13, 194.30it/s] 11%|█         | 1724/15987 [00:08<01:11, 200.63it/s] 11%|█         | 1745/15987 [00:08<01:14, 191.30it/s] 11%|█         | 1769/15987 [00:08<01:09, 203.87it/s] 11%|█         | 1794/15987 [00:08<01:06, 213.48it/s] 11%|█▏        | 1816/15987 [00:08<01:09, 203.39it/s] 11%|█▏        | 1838/15987 [00:08<01:09, 203.64it/s] 12%|█▏        | 1860/15987 [00:08<01:07, 208.17it/s] 12%|█▏        | 1881/15987 [00:09<01:08, 205.57it/s] 12%|█▏        | 1904/15987 [00:09<01:06, 211.28it/s] 12%|█▏        | 1926/15987 [00:09<01:06, 211.29it/s] 12%|█▏        | 1949/15987 [00:09<01:04, 215.98it/s] 12%|█▏        | 1981/15987 [00:09<00:57, 242.16it/s] 13%|█▎        | 2006/15987 [00:09<00:59, 235.30it/s] 13%|█▎        | 2030/15987 [00:09<01:04, 215.97it/s] 13%|█▎        | 2054/15987 [00:09<01:03, 218.99it/s] 13%|█▎        | 2077/15987 [00:09<01:07, 206.43it/s] 13%|█▎        | 2099/15987 [00:10<01:06, 209.57it/s] 13%|█▎        | 2130/15987 [00:10<00:58, 236.36it/s] 13%|█▎        | 2156/15987 [00:10<00:57, 241.27it/s] 14%|█▎        | 2181/15987 [00:10<01:04, 212.81it/s] 14%|█▍        | 2204/15987 [00:10<01:03, 215.77it/s] 14%|█▍        | 2227/15987 [00:10<01:04, 212.89it/s] 14%|█▍        | 2252/15987 [00:10<01:02, 218.67it/s] 14%|█▍        | 2276/15987 [00:10<01:01, 224.00it/s] 14%|█▍        | 2299/15987 [00:10<01:01, 223.94it/s] 15%|█▍        | 2322/15987 [00:11<01:01, 221.78it/s] 15%|█▍        | 2347/15987 [00:11<01:00, 225.96it/s] 15%|█▍        | 2370/15987 [00:11<01:07, 201.09it/s] 15%|█▍        | 2392/15987 [00:11<01:06, 205.96it/s] 15%|█▌        | 2417/15987 [00:11<01:03, 214.02it/s] 15%|█▌        | 2442/15987 [00:11<01:01, 221.50it/s] 15%|█▌        | 2465/15987 [00:11<01:01, 218.98it/s] 16%|█▌        | 2488/15987 [00:11<01:02, 215.39it/s] 16%|█▌        | 2510/15987 [00:11<01:04, 208.87it/s] 16%|█▌        | 2533/15987 [00:12<01:02, 213.78it/s] 16%|█▌        | 2564/15987 [00:12<00:55, 240.56it/s] 16%|█▌        | 2589/15987 [00:12<01:02, 215.87it/s] 16%|█▋        | 2612/15987 [00:12<01:02, 212.42it/s] 16%|█▋        | 2634/15987 [00:12<01:03, 210.70it/s] 17%|█▋        | 2656/15987 [00:12<01:04, 205.91it/s] 17%|█▋        | 2677/15987 [00:12<01:06, 199.82it/s] 17%|█▋        | 2698/15987 [00:12<01:09, 190.59it/s] 17%|█▋        | 2725/15987 [00:12<01:02, 211.52it/s] 17%|█▋        | 2747/15987 [00:13<01:06, 199.29it/s] 17%|█▋        | 2769/15987 [00:13<01:05, 201.43it/s] 17%|█▋        | 2790/15987 [00:13<01:07, 194.52it/s] 18%|█▊        | 2813/15987 [00:13<01:04, 202.91it/s] 18%|█▊        | 2834/15987 [00:13<01:05, 201.79it/s] 18%|█▊        | 2855/15987 [00:13<01:06, 196.75it/s] 18%|█▊        | 2877/15987 [00:13<01:04, 203.05it/s] 18%|█▊        | 2898/15987 [00:13<01:04, 203.72it/s] 18%|█▊        | 2919/15987 [00:13<01:05, 199.45it/s] 18%|█▊        | 2944/15987 [00:14<01:01, 212.84it/s] 19%|█▊        | 2966/15987 [00:14<01:04, 203.10it/s] 19%|█▊        | 2987/15987 [00:14<01:03, 204.48it/s] 19%|█▉        | 3011/15987 [00:14<01:01, 211.31it/s] 19%|█▉        | 3033/15987 [00:14<01:00, 213.42it/s] 19%|█▉        | 3062/15987 [00:14<00:54, 235.00it/s] 19%|█▉        | 3086/15987 [00:14<00:57, 225.32it/s] 19%|█▉        | 3115/15987 [00:14<00:53, 241.89it/s] 20%|█▉        | 3140/15987 [00:14<00:56, 227.93it/s] 20%|█▉        | 3164/15987 [00:15<01:00, 212.88it/s] 20%|█▉        | 3186/15987 [00:15<01:02, 206.17it/s] 20%|██        | 3209/15987 [00:15<01:00, 212.12it/s] 20%|██        | 3231/15987 [00:15<01:00, 209.96it/s] 20%|██        | 3253/15987 [00:15<01:04, 198.03it/s] 20%|██        | 3275/15987 [00:15<01:02, 201.84it/s] 21%|██        | 3296/15987 [00:15<01:02, 203.19it/s] 21%|██        | 3317/15987 [00:15<01:05, 193.27it/s] 21%|██        | 3337/15987 [00:15<01:05, 192.57it/s] 21%|██        | 3362/15987 [00:16<01:01, 206.46it/s] 21%|██        | 3383/15987 [00:16<01:03, 199.46it/s] 21%|██▏       | 3408/15987 [00:16<00:59, 209.79it/s] 21%|██▏       | 3430/15987 [00:16<01:03, 196.99it/s] 22%|██▏       | 3450/15987 [00:16<01:05, 190.60it/s] 22%|██▏       | 3472/15987 [00:16<01:03, 196.58it/s] 22%|██▏       | 3496/15987 [00:16<01:00, 207.38it/s] 22%|██▏       | 3517/15987 [00:16<00:59, 207.85it/s] 22%|██▏       | 3538/15987 [00:16<01:01, 201.44it/s] 22%|██▏       | 3559/15987 [00:16<01:02, 200.31it/s] 22%|██▏       | 3584/15987 [00:17<00:58, 213.36it/s] 23%|██▎       | 3606/15987 [00:17<01:00, 204.85it/s] 23%|██▎       | 3627/15987 [00:17<00:59, 206.23it/s] 23%|██▎       | 3648/15987 [00:17<01:00, 204.99it/s] 23%|██▎       | 3669/15987 [00:17<01:03, 193.16it/s] 23%|██▎       | 3690/15987 [00:17<01:02, 196.10it/s] 23%|██▎       | 3710/15987 [00:17<01:04, 189.81it/s] 23%|██▎       | 3730/15987 [00:17<01:03, 191.76it/s] 23%|██▎       | 3750/15987 [00:17<01:04, 190.23it/s] 24%|██▎       | 3773/15987 [00:18<01:00, 200.30it/s] 24%|██▍       | 3798/15987 [00:18<00:57, 211.12it/s] 24%|██▍       | 3820/15987 [00:18<00:58, 209.42it/s] 24%|██▍       | 3841/15987 [00:18<01:02, 195.77it/s] 24%|██▍       | 3866/15987 [00:18<00:58, 208.16it/s] 24%|██▍       | 3890/15987 [00:18<00:56, 213.90it/s] 25%|██▍       | 3919/15987 [00:18<00:51, 234.84it/s] 25%|██▍       | 3943/15987 [00:18<00:54, 220.78it/s] 25%|██▍       | 3967/15987 [00:18<00:53, 223.72it/s] 25%|██▍       | 3990/15987 [00:19<00:58, 204.15it/s] 25%|██▌       | 4012/15987 [00:19<00:57, 206.50it/s] 25%|██▌       | 4038/15987 [00:19<00:54, 217.30it/s] 25%|██▌       | 4062/15987 [00:19<00:54, 219.53it/s] 26%|██▌       | 4085/15987 [00:19<00:54, 219.46it/s] 26%|██▌       | 4108/15987 [00:19<00:55, 214.21it/s] 26%|██▌       | 4133/15987 [00:19<00:53, 221.53it/s] 26%|██▌       | 4158/15987 [00:19<00:51, 229.04it/s] 26%|██▌       | 4186/15987 [00:19<00:49, 240.26it/s] 26%|██▋       | 4212/15987 [00:20<00:47, 245.38it/s] 27%|██▋       | 4238/15987 [00:20<00:47, 248.53it/s] 27%|██▋       | 4263/15987 [00:20<00:47, 244.43it/s] 27%|██▋       | 4290/15987 [00:20<00:47, 248.12it/s] 27%|██▋       | 4315/15987 [00:20<00:47, 245.25it/s] 27%|██▋       | 4340/15987 [00:20<00:48, 241.81it/s] 27%|██▋       | 4365/15987 [00:20<00:47, 244.13it/s] 27%|██▋       | 4390/15987 [00:20<00:47, 244.36it/s] 28%|██▊       | 4421/15987 [00:20<00:44, 261.78it/s] 28%|██▊       | 4448/15987 [00:20<00:48, 238.02it/s] 28%|██▊       | 4473/15987 [00:21<00:47, 240.12it/s] 28%|██▊       | 4498/15987 [00:21<00:50, 225.72it/s] 28%|██▊       | 4521/15987 [00:21<00:52, 219.50it/s] 28%|██▊       | 4544/15987 [00:21<00:51, 220.11it/s] 29%|██▊       | 4567/15987 [00:21<00:54, 208.55it/s] 29%|██▊       | 4594/15987 [00:21<00:51, 223.29it/s] 29%|██▉       | 4617/15987 [00:21<00:51, 221.89it/s] 29%|██▉       | 4642/15987 [00:21<00:50, 225.57it/s] 29%|██▉       | 4665/15987 [00:21<00:50, 222.26it/s] 29%|██▉       | 4691/15987 [00:22<00:48, 231.97it/s] 29%|██▉       | 4715/15987 [00:22<00:50, 223.88it/s] 30%|██▉       | 4738/15987 [00:22<00:54, 204.77it/s] 30%|██▉       | 4759/15987 [00:22<00:56, 197.93it/s] 30%|██▉       | 4780/15987 [00:22<00:56, 197.73it/s] 30%|███       | 4800/15987 [00:22<00:59, 188.78it/s] 30%|███       | 4820/15987 [00:22<00:59, 186.29it/s] 30%|███       | 4842/15987 [00:22<00:57, 194.34it/s] 30%|███       | 4863/15987 [00:22<00:56, 195.72it/s] 31%|███       | 4885/15987 [00:23<00:55, 201.31it/s] 31%|███       | 4911/15987 [00:23<00:50, 217.56it/s] 31%|███       | 4936/15987 [00:23<00:49, 223.79it/s] 31%|███       | 4962/15987 [00:23<00:47, 234.09it/s] 31%|███       | 4987/15987 [00:23<00:46, 235.87it/s] 31%|███▏      | 5013/15987 [00:23<00:45, 239.71it/s] 32%|███▏      | 5038/15987 [00:23<00:49, 220.15it/s] 32%|███▏      | 5061/15987 [00:23<00:49, 220.62it/s] 32%|███▏      | 5084/15987 [00:23<00:52, 207.51it/s] 32%|███▏      | 5108/15987 [00:24<00:50, 215.17it/s] 32%|███▏      | 5134/15987 [00:24<00:47, 227.48it/s] 32%|███▏      | 5158/15987 [00:24<00:50, 213.56it/s] 32%|███▏      | 5180/15987 [00:24<00:50, 212.02it/s] 33%|███▎      | 5203/15987 [00:24<00:50, 215.16it/s] 33%|███▎      | 5233/15987 [00:24<00:45, 235.20it/s] 33%|███▎      | 5257/15987 [00:24<00:50, 211.12it/s] 33%|███▎      | 5279/15987 [00:24<00:53, 200.43it/s] 33%|███▎      | 5300/15987 [00:24<00:52, 202.13it/s] 33%|███▎      | 5321/15987 [00:25<00:56, 188.25it/s] 33%|███▎      | 5343/15987 [00:25<00:54, 196.23it/s] 34%|███▎      | 5366/15987 [00:25<00:52, 203.26it/s] 34%|███▎      | 5390/15987 [00:25<00:50, 208.87it/s] 34%|███▍      | 5412/15987 [00:25<00:52, 202.70it/s] 34%|███▍      | 5433/15987 [00:25<00:54, 194.27it/s] 34%|███▍      | 5453/15987 [00:25<00:54, 192.11it/s] 34%|███▍      | 5481/15987 [00:25<00:48, 215.13it/s] 34%|███▍      | 5511/15987 [00:25<00:44, 237.17it/s] 35%|███▍      | 5535/15987 [00:26<00:49, 212.26it/s] 35%|███▍      | 5557/15987 [00:26<00:52, 200.44it/s] 35%|███▍      | 5578/15987 [00:26<00:52, 199.34it/s] 35%|███▌      | 5599/15987 [00:26<00:54, 191.13it/s] 35%|███▌      | 5621/15987 [00:26<00:52, 196.77it/s] 35%|███▌      | 5641/15987 [00:26<00:53, 192.25it/s] 35%|███▌      | 5662/15987 [00:26<00:52, 196.70it/s] 36%|███▌      | 5682/15987 [00:26<00:52, 197.37it/s] 36%|███▌      | 5705/15987 [00:27<00:50, 203.87it/s] 36%|███▌      | 5733/15987 [00:27<00:46, 221.55it/s] 36%|███▌      | 5756/15987 [00:27<00:49, 205.17it/s] 36%|███▌      | 5777/15987 [00:27<00:55, 182.51it/s] 36%|███▋      | 5799/15987 [00:27<00:53, 190.12it/s] 36%|███▋      | 5820/15987 [00:27<00:52, 195.08it/s] 37%|███▋      | 5843/15987 [00:27<00:50, 202.78it/s] 37%|███▋      | 5867/15987 [00:27<00:47, 211.98it/s] 37%|███▋      | 5889/15987 [00:27<00:47, 213.95it/s] 37%|███▋      | 5912/15987 [00:28<00:46, 218.34it/s] 37%|███▋      | 5935/15987 [00:28<00:45, 220.56it/s] 37%|███▋      | 5958/15987 [00:28<00:45, 221.14it/s] 37%|███▋      | 5981/15987 [00:28<00:48, 204.42it/s] 38%|███▊      | 6002/15987 [00:28<00:48, 204.04it/s] 38%|███▊      | 6027/15987 [00:28<00:46, 215.89it/s] 38%|███▊      | 6054/15987 [00:28<00:43, 227.41it/s] 38%|███▊      | 6077/15987 [00:28<00:45, 218.47it/s] 38%|███▊      | 6100/15987 [00:28<00:46, 212.25it/s] 38%|███▊      | 6122/15987 [00:28<00:47, 206.62it/s] 38%|███▊      | 6143/15987 [00:29<00:48, 202.13it/s] 39%|███▊      | 6164/15987 [00:29<00:50, 195.12it/s] 39%|███▊      | 6186/15987 [00:29<00:48, 201.36it/s] 39%|███▉      | 6207/15987 [00:29<00:49, 198.57it/s] 39%|███▉      | 6227/15987 [00:29<00:52, 187.42it/s] 39%|███▉      | 6248/15987 [00:29<00:50, 193.47it/s] 39%|███▉      | 6268/15987 [00:29<00:51, 188.85it/s] 39%|███▉      | 6288/15987 [00:29<00:50, 191.87it/s] 39%|███▉      | 6313/15987 [00:29<00:47, 204.16it/s] 40%|███▉      | 6335/15987 [00:30<00:46, 208.21it/s] 40%|███▉      | 6360/15987 [00:30<00:43, 219.11it/s] 40%|███▉      | 6386/15987 [00:30<00:42, 228.16it/s] 40%|████      | 6409/15987 [00:30<00:42, 222.79it/s] 40%|████      | 6432/15987 [00:30<00:42, 222.71it/s] 40%|████      | 6455/15987 [00:30<00:44, 215.01it/s] 41%|████      | 6477/15987 [00:30<00:43, 216.40it/s] 41%|████      | 6499/15987 [00:30<00:44, 214.53it/s] 41%|████      | 6523/15987 [00:30<00:43, 218.07it/s] 41%|████      | 6545/15987 [00:31<00:45, 205.72it/s] 41%|████      | 6566/15987 [00:31<00:47, 196.90it/s] 41%|████      | 6586/15987 [00:31<00:49, 191.40it/s] 41%|████▏     | 6608/15987 [00:31<00:48, 195.35it/s] 41%|████▏     | 6633/15987 [00:31<00:44, 209.43it/s] 42%|████▏     | 6655/15987 [00:31<00:46, 201.48it/s] 42%|████▏     | 6677/15987 [00:31<00:45, 205.72it/s] 42%|████▏     | 6698/15987 [00:31<00:45, 204.25it/s] 42%|████▏     | 6719/15987 [00:31<00:51, 179.86it/s] 42%|████▏     | 6741/15987 [00:32<00:48, 190.35it/s] 42%|████▏     | 6763/15987 [00:32<00:47, 194.89it/s] 42%|████▏     | 6790/15987 [00:32<00:43, 213.19it/s] 43%|████▎     | 6812/15987 [00:32<00:43, 210.91it/s] 43%|████▎     | 6834/15987 [00:32<00:43, 212.12it/s] 43%|████▎     | 6857/15987 [00:32<00:42, 214.79it/s] 43%|████▎     | 6881/15987 [00:32<00:41, 221.39it/s] 43%|████▎     | 6904/15987 [00:32<00:43, 206.88it/s] 43%|████▎     | 6925/15987 [00:32<00:44, 203.71it/s] 43%|████▎     | 6948/15987 [00:33<00:42, 210.70it/s] 44%|████▎     | 6970/15987 [00:33<00:46, 195.94it/s] 44%|████▍     | 6996/15987 [00:33<00:42, 209.99it/s] 44%|████▍     | 7021/15987 [00:33<00:40, 219.86it/s] 44%|████▍     | 7044/15987 [00:33<00:41, 213.16it/s] 44%|████▍     | 7066/15987 [00:33<00:41, 212.46it/s] 44%|████▍     | 7092/15987 [00:33<00:39, 224.25it/s] 45%|████▍     | 7116/15987 [00:33<00:39, 225.49it/s] 45%|████▍     | 7140/15987 [00:33<00:39, 225.25it/s] 45%|████▍     | 7164/15987 [00:33<00:39, 225.45it/s] 45%|████▍     | 7187/15987 [00:34<00:39, 220.46it/s] 45%|████▌     | 7210/15987 [00:34<00:39, 219.66it/s] 45%|████▌     | 7238/15987 [00:34<00:37, 233.97it/s] 45%|████▌     | 7262/15987 [00:34<00:37, 233.84it/s] 46%|████▌     | 7293/15987 [00:34<00:34, 253.07it/s] 46%|████▌     | 7319/15987 [00:34<00:36, 234.70it/s] 46%|████▌     | 7343/15987 [00:34<00:38, 225.84it/s] 46%|████▌     | 7366/15987 [00:34<00:40, 215.05it/s] 46%|████▌     | 7388/15987 [00:35<00:42, 203.56it/s] 46%|████▋     | 7411/15987 [00:35<00:40, 209.73it/s] 46%|████▋     | 7433/15987 [00:35<00:41, 204.01it/s] 47%|████▋     | 7454/15987 [00:35<00:44, 191.25it/s] 47%|████▋     | 7474/15987 [00:35<00:44, 192.71it/s] 47%|████▋     | 7497/15987 [00:35<00:41, 202.22it/s] 47%|████▋     | 7518/15987 [00:35<00:42, 200.96it/s] 47%|████▋     | 7539/15987 [00:35<00:43, 193.82it/s] 47%|████▋     | 7564/15987 [00:35<00:40, 208.46it/s] 47%|████▋     | 7590/15987 [00:35<00:37, 222.38it/s] 48%|████▊     | 7616/15987 [00:36<00:36, 230.04it/s] 48%|████▊     | 7640/15987 [00:36<00:37, 223.00it/s] 48%|████▊     | 7663/15987 [00:36<00:38, 217.69it/s] 48%|████▊     | 7685/15987 [00:36<00:39, 208.70it/s] 48%|████▊     | 7706/15987 [00:36<00:41, 198.97it/s] 48%|████▊     | 7727/15987 [00:36<00:43, 189.37it/s] 48%|████▊     | 7747/15987 [00:36<00:44, 186.90it/s] 49%|████▊     | 7771/15987 [00:36<00:40, 200.98it/s] 49%|████▊     | 7793/15987 [00:36<00:40, 204.14it/s] 49%|████▉     | 7814/15987 [00:37<00:41, 195.64it/s] 49%|████▉     | 7836/15987 [00:37<00:40, 199.40it/s] 49%|████▉     | 7857/15987 [00:37<00:40, 202.28it/s] 49%|████▉     | 7883/15987 [00:37<00:37, 215.84it/s] 49%|████▉     | 7905/15987 [00:37<00:37, 214.58it/s] 50%|████▉     | 7927/15987 [00:37<00:39, 204.99it/s] 50%|████▉     | 7949/15987 [00:37<00:38, 206.15it/s] 50%|████▉     | 7973/15987 [00:37<00:37, 211.97it/s] 50%|█████     | 8000/15987 [00:37<00:35, 226.77it/s] 50%|█████     | 8023/15987 [00:38<00:38, 207.01it/s] 50%|█████     | 8047/15987 [00:38<00:37, 214.43it/s] 50%|█████     | 8069/15987 [00:38<00:38, 208.06it/s] 51%|█████     | 8091/15987 [00:38<00:37, 210.76it/s] 51%|█████     | 8114/15987 [00:38<00:36, 215.09it/s] 51%|█████     | 8136/15987 [00:38<00:37, 210.30it/s] 51%|█████     | 8160/15987 [00:38<00:36, 214.64it/s] 51%|█████     | 8182/15987 [00:38<00:36, 211.91it/s] 51%|█████▏    | 8204/15987 [00:38<00:36, 210.58it/s] 51%|█████▏    | 8226/15987 [00:39<00:39, 198.79it/s] 52%|█████▏    | 8247/15987 [00:39<00:38, 200.79it/s] 52%|█████▏    | 8270/15987 [00:39<00:36, 208.58it/s] 52%|█████▏    | 8298/15987 [00:39<00:33, 228.59it/s] 52%|█████▏    | 8322/15987 [00:39<00:38, 199.97it/s] 52%|█████▏    | 8343/15987 [00:39<00:39, 195.57it/s] 52%|█████▏    | 8366/15987 [00:39<00:37, 204.65it/s] 52%|█████▏    | 8387/15987 [00:39<00:39, 192.87it/s] 53%|█████▎    | 8410/15987 [00:39<00:37, 199.55it/s] 53%|█████▎    | 8431/15987 [00:40<00:37, 199.72it/s] 53%|█████▎    | 8452/15987 [00:40<00:37, 200.90it/s] 53%|█████▎    | 8473/15987 [00:40<00:38, 197.16it/s] 53%|█████▎    | 8498/15987 [00:40<00:35, 208.15it/s] 53%|█████▎    | 8524/15987 [00:40<00:34, 219.29it/s] 53%|█████▎    | 8547/15987 [00:40<00:34, 216.15it/s] 54%|█████▎    | 8569/15987 [00:40<00:34, 215.47it/s] 54%|█████▍    | 8596/15987 [00:40<00:32, 226.79it/s] 54%|█████▍    | 8619/15987 [00:40<00:35, 209.48it/s] 54%|█████▍    | 8641/15987 [00:41<00:35, 205.96it/s] 54%|█████▍    | 8662/15987 [00:41<00:37, 197.88it/s] 54%|█████▍    | 8682/15987 [00:41<00:36, 197.89it/s] 54%|█████▍    | 8705/15987 [00:41<00:35, 204.03it/s] 55%|█████▍    | 8726/15987 [00:41<00:35, 202.26it/s] 55%|█████▍    | 8747/15987 [00:41<00:38, 186.31it/s] 55%|█████▍    | 8772/15987 [00:41<00:35, 200.73it/s] 55%|█████▌    | 8798/15987 [00:41<00:33, 213.17it/s] 55%|█████▌    | 8820/15987 [00:41<00:35, 204.37it/s] 55%|█████▌    | 8846/15987 [00:42<00:32, 218.96it/s] 55%|█████▌    | 8869/15987 [00:42<00:33, 213.41it/s] 56%|█████▌    | 8891/15987 [00:42<00:34, 205.41it/s] 56%|█████▌    | 8912/15987 [00:42<00:35, 201.36it/s] 56%|█████▌    | 8934/15987 [00:42<00:34, 206.13it/s] 56%|█████▌    | 8959/15987 [00:42<00:32, 217.58it/s] 56%|█████▌    | 8987/15987 [00:42<00:30, 231.87it/s] 56%|█████▋    | 9011/15987 [00:42<00:34, 203.42it/s] 57%|█████▋    | 9036/15987 [00:42<00:32, 213.98it/s] 57%|█████▋    | 9061/15987 [00:43<00:31, 222.84it/s] 57%|█████▋    | 9086/15987 [00:43<00:30, 225.98it/s] 57%|█████▋    | 9109/15987 [00:43<00:30, 222.76it/s] 57%|█████▋    | 9132/15987 [00:43<00:32, 208.34it/s] 57%|█████▋    | 9154/15987 [00:43<00:33, 205.34it/s] 57%|█████▋    | 9175/15987 [00:43<00:33, 202.69it/s] 58%|█████▊    | 9196/15987 [00:43<00:34, 194.69it/s] 58%|█████▊    | 9216/15987 [00:43<00:34, 196.01it/s] 58%|█████▊    | 9240/15987 [00:43<00:32, 208.01it/s] 58%|█████▊    | 9261/15987 [00:44<00:32, 207.73it/s] 58%|█████▊    | 9286/15987 [00:44<00:30, 216.82it/s] 58%|█████▊    | 9308/15987 [00:44<00:33, 201.48it/s] 58%|█████▊    | 9329/15987 [00:44<00:33, 197.12it/s] 58%|█████▊    | 9350/15987 [00:44<00:33, 198.31it/s] 59%|█████▊    | 9370/15987 [00:44<00:33, 195.03it/s] 59%|█████▊    | 9390/15987 [00:44<00:33, 194.62it/s] 59%|█████▉    | 9414/15987 [00:44<00:31, 206.65it/s] 59%|█████▉    | 9441/15987 [00:44<00:29, 220.77it/s] 59%|█████▉    | 9464/15987 [00:45<00:31, 207.78it/s] 59%|█████▉    | 9485/15987 [00:45<00:32, 200.54it/s] 59%|█████▉    | 9506/15987 [00:45<00:33, 196.01it/s] 60%|█████▉    | 9531/15987 [00:45<00:31, 207.69it/s] 60%|█████▉    | 9552/15987 [00:45<00:31, 203.11it/s] 60%|█████▉    | 9576/15987 [00:45<00:30, 208.98it/s] 60%|██████    | 9597/15987 [00:45<00:31, 201.73it/s] 60%|██████    | 9628/15987 [00:45<00:27, 227.39it/s] 60%|██████    | 9651/15987 [00:45<00:30, 208.40it/s] 61%|██████    | 9681/15987 [00:46<00:27, 232.71it/s] 61%|██████    | 9709/15987 [00:46<00:25, 245.78it/s] 61%|██████    | 9735/15987 [00:46<00:25, 248.69it/s] 61%|██████    | 9761/15987 [00:46<00:27, 225.10it/s] 61%|██████    | 9785/15987 [00:46<00:28, 217.34it/s] 61%|██████▏   | 9808/15987 [00:46<00:29, 206.22it/s] 61%|██████▏   | 9829/15987 [00:46<00:29, 207.05it/s] 62%|██████▏   | 9851/15987 [00:46<00:29, 209.87it/s] 62%|██████▏   | 9873/15987 [00:46<00:31, 194.96it/s] 62%|██████▏   | 9893/15987 [00:47<00:32, 189.31it/s] 62%|██████▏   | 9918/15987 [00:47<00:29, 205.36it/s] 62%|██████▏   | 9939/15987 [00:47<00:30, 200.54it/s] 62%|██████▏   | 9962/15987 [00:47<00:29, 207.62it/s] 62%|██████▏   | 9987/15987 [00:47<00:27, 217.90it/s] 63%|██████▎   | 10009/15987 [00:47<00:30, 197.95it/s] 63%|██████▎   | 10030/15987 [00:47<00:31, 191.33it/s] 63%|██████▎   | 10055/15987 [00:47<00:29, 203.54it/s] 63%|██████▎   | 10080/15987 [00:47<00:27, 214.31it/s] 63%|██████▎   | 10102/15987 [00:48<00:28, 206.50it/s] 63%|██████▎   | 10123/15987 [00:48<00:28, 205.92it/s] 63%|██████▎   | 10144/15987 [00:48<00:28, 206.55it/s] 64%|██████▎   | 10165/15987 [00:48<00:28, 201.11it/s] 64%|██████▎   | 10188/15987 [00:48<00:27, 208.19it/s] 64%|██████▍   | 10209/15987 [00:48<00:29, 197.88it/s] 64%|██████▍   | 10229/15987 [00:48<00:31, 185.66it/s] 64%|██████▍   | 10249/15987 [00:48<00:30, 187.86it/s] 64%|██████▍   | 10276/15987 [00:48<00:27, 209.96it/s] 64%|██████▍   | 10300/15987 [00:49<00:26, 216.45it/s] 65%|██████▍   | 10322/15987 [00:49<00:26, 210.07it/s] 65%|██████▍   | 10344/15987 [00:49<00:26, 211.29it/s] 65%|██████▍   | 10366/15987 [00:49<00:26, 211.75it/s] 65%|██████▍   | 10388/15987 [00:49<00:26, 212.58it/s] 65%|██████▌   | 10411/15987 [00:49<00:25, 216.78it/s] 65%|██████▌   | 10434/15987 [00:49<00:25, 220.46it/s] 65%|██████▌   | 10460/15987 [00:49<00:24, 228.54it/s] 66%|██████▌   | 10491/15987 [00:49<00:22, 249.68it/s] 66%|██████▌   | 10519/15987 [00:49<00:21, 258.03it/s] 66%|██████▌   | 10545/15987 [00:50<00:22, 241.50it/s] 66%|██████▌   | 10570/15987 [00:50<00:23, 230.73it/s] 66%|██████▋   | 10594/15987 [00:50<00:24, 222.12it/s] 66%|██████▋   | 10619/15987 [00:50<00:23, 229.32it/s] 67%|██████▋   | 10643/15987 [00:50<00:26, 198.38it/s] 67%|██████▋   | 10669/15987 [00:50<00:25, 212.62it/s] 67%|██████▋   | 10692/15987 [00:50<00:26, 202.65it/s] 67%|██████▋   | 10713/15987 [00:50<00:26, 202.13it/s] 67%|██████▋   | 10734/15987 [00:51<00:27, 193.58it/s] 67%|██████▋   | 10754/15987 [00:51<00:29, 179.19it/s] 67%|██████▋   | 10776/15987 [00:51<00:27, 189.32it/s] 68%|██████▊   | 10796/15987 [00:51<00:27, 189.20it/s] 68%|██████▊   | 10816/15987 [00:51<00:27, 190.41it/s] 68%|██████▊   | 10841/15987 [00:51<00:25, 204.34it/s] 68%|██████▊   | 10863/15987 [00:51<00:24, 206.02it/s] 68%|██████▊   | 10884/15987 [00:51<00:25, 197.47it/s] 68%|██████▊   | 10904/15987 [00:51<00:26, 190.96it/s] 68%|██████▊   | 10924/15987 [00:52<00:27, 181.98it/s] 68%|██████▊   | 10943/15987 [00:52<00:28, 177.95it/s] 69%|██████▊   | 10968/15987 [00:52<00:25, 197.45it/s] 69%|██████▊   | 10990/15987 [00:52<00:24, 203.61it/s] 69%|██████▉   | 11013/15987 [00:52<00:23, 209.46it/s] 69%|██████▉   | 11035/15987 [00:52<00:25, 195.77it/s] 69%|██████▉   | 11060/15987 [00:52<00:23, 206.98it/s] 69%|██████▉   | 11084/15987 [00:52<00:22, 215.83it/s] 70%|██████▉   | 11111/15987 [00:52<00:21, 226.76it/s] 70%|██████▉   | 11134/15987 [00:53<00:21, 222.15it/s] 70%|██████▉   | 11158/15987 [00:53<00:21, 226.48it/s] 70%|██████▉   | 11181/15987 [00:53<00:22, 216.86it/s] 70%|███████   | 11205/15987 [00:53<00:21, 222.79it/s] 70%|███████   | 11228/15987 [00:53<00:22, 215.57it/s] 70%|███████   | 11253/15987 [00:53<00:21, 221.96it/s] 71%|███████   | 11277/15987 [00:53<00:21, 223.85it/s] 71%|███████   | 11300/15987 [00:53<00:21, 215.93it/s] 71%|███████   | 11323/15987 [00:53<00:21, 218.26it/s] 71%|███████   | 11347/15987 [00:54<00:20, 220.97it/s] 71%|███████   | 11370/15987 [00:54<00:20, 222.68it/s] 71%|███████▏  | 11393/15987 [00:54<00:21, 213.15it/s] 71%|███████▏  | 11418/15987 [00:54<00:20, 220.27it/s] 72%|███████▏  | 11441/15987 [00:54<00:22, 204.94it/s] 72%|███████▏  | 11462/15987 [00:54<00:24, 188.19it/s] 72%|███████▏  | 11486/15987 [00:54<00:22, 201.37it/s] 72%|███████▏  | 11507/15987 [00:54<00:24, 183.43it/s] 72%|███████▏  | 11526/15987 [00:54<00:24, 181.79it/s] 72%|███████▏  | 11545/15987 [00:55<00:24, 182.30it/s] 72%|███████▏  | 11565/15987 [00:55<00:23, 186.61it/s] 72%|███████▏  | 11589/15987 [00:55<00:21, 200.68it/s] 73%|███████▎  | 11610/15987 [00:55<00:21, 200.45it/s] 73%|███████▎  | 11631/15987 [00:55<00:22, 196.85it/s] 73%|███████▎  | 11651/15987 [00:55<00:23, 184.58it/s] 73%|███████▎  | 11674/15987 [00:55<00:22, 195.13it/s] 73%|███████▎  | 11694/15987 [00:55<00:22, 194.73it/s] 73%|███████▎  | 11714/15987 [00:55<00:22, 193.05it/s] 73%|███████▎  | 11734/15987 [00:56<00:22, 191.44it/s] 74%|███████▎  | 11760/15987 [00:56<00:20, 208.63it/s] 74%|███████▎  | 11783/15987 [00:56<00:19, 211.79it/s] 74%|███████▍  | 11805/15987 [00:56<00:20, 202.07it/s] 74%|███████▍  | 11827/15987 [00:56<00:20, 204.68it/s] 74%|███████▍  | 11848/15987 [00:56<00:21, 195.92it/s] 74%|███████▍  | 11869/15987 [00:56<00:20, 198.18it/s] 74%|███████▍  | 11889/15987 [00:56<00:21, 194.18it/s] 74%|███████▍  | 11909/15987 [00:56<00:21, 186.44it/s] 75%|███████▍  | 11932/15987 [00:56<00:20, 198.44it/s] 75%|███████▍  | 11957/15987 [00:57<00:19, 211.85it/s] 75%|███████▍  | 11979/15987 [00:57<00:19, 204.08it/s] 75%|███████▌  | 12003/15987 [00:57<00:18, 210.89it/s] 75%|███████▌  | 12027/15987 [00:57<00:18, 218.09it/s] 75%|███████▌  | 12056/15987 [00:57<00:16, 234.18it/s] 76%|███████▌  | 12080/15987 [00:57<00:17, 229.31it/s] 76%|███████▌  | 12109/15987 [00:57<00:15, 242.52it/s] 76%|███████▌  | 12134/15987 [00:57<00:16, 232.93it/s] 76%|███████▌  | 12158/15987 [00:57<00:16, 225.84it/s] 76%|███████▌  | 12181/15987 [00:58<00:17, 213.53it/s] 76%|███████▋  | 12203/15987 [00:58<00:18, 209.26it/s] 76%|███████▋  | 12225/15987 [00:58<00:18, 207.67it/s] 77%|███████▋  | 12250/15987 [00:58<00:17, 218.78it/s] 77%|███████▋  | 12277/15987 [00:58<00:15, 232.11it/s] 77%|███████▋  | 12302/15987 [00:58<00:15, 236.53it/s] 77%|███████▋  | 12326/15987 [00:58<00:16, 226.89it/s] 77%|███████▋  | 12349/15987 [00:58<00:16, 219.16it/s] 77%|███████▋  | 12372/15987 [00:58<00:17, 211.92it/s] 78%|███████▊  | 12394/15987 [00:59<00:17, 206.91it/s] 78%|███████▊  | 12420/15987 [00:59<00:16, 219.64it/s] 78%|███████▊  | 12443/15987 [00:59<00:17, 206.68it/s] 78%|███████▊  | 12466/15987 [00:59<00:16, 211.95it/s] 78%|███████▊  | 12491/15987 [00:59<00:15, 222.10it/s] 78%|███████▊  | 12514/15987 [00:59<00:15, 222.83it/s] 78%|███████▊  | 12538/15987 [00:59<00:15, 226.32it/s] 79%|███████▊  | 12561/15987 [00:59<00:16, 205.22it/s] 79%|███████▊  | 12582/15987 [00:59<00:17, 196.61it/s] 79%|███████▉  | 12606/15987 [01:00<00:16, 204.66it/s] 79%|███████▉  | 12627/15987 [01:00<00:16, 204.26it/s] 79%|███████▉  | 12650/15987 [01:00<00:15, 210.55it/s] 79%|███████▉  | 12672/15987 [01:00<00:16, 202.27it/s] 79%|███████▉  | 12694/15987 [01:00<00:15, 206.59it/s] 80%|███████▉  | 12717/15987 [01:00<00:15, 209.96it/s] 80%|███████▉  | 12740/15987 [01:00<00:15, 211.60it/s] 80%|███████▉  | 12762/15987 [01:00<00:15, 203.89it/s] 80%|███████▉  | 12786/15987 [01:00<00:15, 212.70it/s] 80%|████████  | 12809/15987 [01:01<00:14, 216.44it/s] 80%|████████  | 12835/15987 [01:01<00:14, 224.64it/s] 80%|████████  | 12858/15987 [01:01<00:14, 222.77it/s] 81%|████████  | 12882/15987 [01:01<00:13, 226.74it/s] 81%|████████  | 12905/15987 [01:01<00:14, 214.12it/s] 81%|████████  | 12927/15987 [01:01<00:14, 206.70it/s] 81%|████████  | 12948/15987 [01:01<00:14, 204.68it/s] 81%|████████  | 12971/15987 [01:01<00:14, 211.12it/s] 81%|████████▏ | 12993/15987 [01:01<00:14, 211.39it/s] 81%|████████▏ | 13015/15987 [01:02<00:13, 212.60it/s] 82%|████████▏ | 13037/15987 [01:02<00:14, 204.52it/s] 82%|████████▏ | 13058/15987 [01:02<00:14, 198.86it/s] 82%|████████▏ | 13078/15987 [01:02<00:14, 197.27it/s] 82%|████████▏ | 13100/15987 [01:02<00:14, 203.02it/s] 82%|████████▏ | 13123/15987 [01:02<00:13, 207.89it/s] 82%|████████▏ | 13150/15987 [01:02<00:12, 224.51it/s] 82%|████████▏ | 13173/15987 [01:02<00:13, 214.04it/s] 83%|████████▎ | 13195/15987 [01:02<00:13, 202.01it/s] 83%|████████▎ | 13216/15987 [01:02<00:13, 200.19it/s] 83%|████████▎ | 13237/15987 [01:03<00:14, 191.65it/s] 83%|████████▎ | 13261/15987 [01:03<00:13, 203.87it/s] 83%|████████▎ | 13285/15987 [01:03<00:12, 210.31it/s] 83%|████████▎ | 13307/15987 [01:03<00:12, 209.50it/s] 83%|████████▎ | 13329/15987 [01:03<00:12, 210.46it/s] 84%|████████▎ | 13351/15987 [01:03<00:13, 200.61it/s] 84%|████████▎ | 13373/15987 [01:03<00:12, 205.57it/s] 84%|████████▍ | 13397/15987 [01:03<00:12, 214.86it/s] 84%|████████▍ | 13424/15987 [01:03<00:11, 228.56it/s] 84%|████████▍ | 13447/15987 [01:04<00:11, 220.73it/s] 84%|████████▍ | 13470/15987 [01:04<00:11, 217.18it/s] 84%|████████▍ | 13492/15987 [01:04<00:12, 207.52it/s] 85%|████████▍ | 13515/15987 [01:04<00:11, 212.64it/s] 85%|████████▍ | 13538/15987 [01:04<00:11, 216.56it/s] 85%|████████▍ | 13560/15987 [01:04<00:11, 217.20it/s] 85%|████████▍ | 13582/15987 [01:04<00:11, 217.38it/s] 85%|████████▌ | 13604/15987 [01:04<00:11, 213.66it/s] 85%|████████▌ | 13626/15987 [01:04<00:11, 211.69it/s] 85%|████████▌ | 13649/15987 [01:05<00:10, 216.29it/s] 86%|████████▌ | 13672/15987 [01:05<00:10, 219.09it/s] 86%|████████▌ | 13695/15987 [01:05<00:10, 219.28it/s] 86%|████████▌ | 13718/15987 [01:05<00:10, 221.33it/s] 86%|████████▌ | 13741/15987 [01:05<00:10, 220.79it/s] 86%|████████▌ | 13764/15987 [01:05<00:10, 218.46it/s] 86%|████████▌ | 13787/15987 [01:05<00:09, 220.53it/s] 86%|████████▋ | 13810/15987 [01:05<00:10, 211.17it/s] 87%|████████▋ | 13832/15987 [01:05<00:10, 200.67it/s] 87%|████████▋ | 13858/15987 [01:05<00:09, 213.23it/s] 87%|████████▋ | 13880/15987 [01:06<00:09, 211.04it/s] 87%|████████▋ | 13902/15987 [01:06<00:09, 211.32it/s] 87%|████████▋ | 13925/15987 [01:06<00:09, 212.34it/s] 87%|████████▋ | 13947/15987 [01:06<00:10, 191.59it/s] 87%|████████▋ | 13969/15987 [01:06<00:10, 199.06it/s] 88%|████████▊ | 13991/15987 [01:06<00:09, 203.43it/s] 88%|████████▊ | 14012/15987 [01:06<00:09, 204.91it/s] 88%|████████▊ | 14033/15987 [01:06<00:09, 205.52it/s] 88%|████████▊ | 14065/15987 [01:06<00:08, 234.20it/s] 88%|████████▊ | 14089/15987 [01:07<00:08, 227.37it/s] 88%|████████▊ | 14113/15987 [01:07<00:08, 226.83it/s] 88%|████████▊ | 14136/15987 [01:07<00:08, 215.91it/s] 89%|████████▊ | 14166/15987 [01:07<00:07, 238.00it/s] 89%|████████▉ | 14191/15987 [01:07<00:08, 220.75it/s] 89%|████████▉ | 14214/15987 [01:07<00:08, 217.57it/s] 89%|████████▉ | 14238/15987 [01:07<00:07, 222.81it/s] 89%|████████▉ | 14261/15987 [01:07<00:08, 215.27it/s] 89%|████████▉ | 14283/15987 [01:07<00:08, 204.16it/s] 89%|████████▉ | 14306/15987 [01:08<00:08, 209.29it/s] 90%|████████▉ | 14331/15987 [01:08<00:07, 216.92it/s] 90%|████████▉ | 14353/15987 [01:08<00:07, 209.81it/s] 90%|████████▉ | 14375/15987 [01:08<00:08, 196.85it/s] 90%|█████████ | 14402/15987 [01:08<00:07, 214.34it/s] 90%|█████████ | 14424/15987 [01:08<00:07, 211.98it/s] 90%|█████████ | 14446/15987 [01:08<00:07, 207.54it/s] 90%|█████████ | 14467/15987 [01:08<00:07, 202.60it/s] 91%|█████████ | 14493/15987 [01:08<00:06, 218.16it/s] 91%|█████████ | 14515/15987 [01:09<00:07, 205.27it/s] 91%|█████████ | 14537/15987 [01:09<00:07, 205.47it/s] 91%|█████████ | 14560/15987 [01:09<00:06, 212.23it/s] 91%|█████████ | 14582/15987 [01:09<00:07, 195.53it/s] 91%|█████████▏| 14606/15987 [01:09<00:06, 206.66it/s] 91%|█████████▏| 14628/15987 [01:09<00:06, 201.63it/s] 92%|█████████▏| 14649/15987 [01:09<00:06, 199.62it/s] 92%|█████████▏| 14672/15987 [01:09<00:06, 204.88it/s] 92%|█████████▏| 14693/15987 [01:09<00:06, 200.67it/s] 92%|█████████▏| 14714/15987 [01:10<00:06, 193.63it/s] 92%|█████████▏| 14736/15987 [01:10<00:06, 200.21it/s] 92%|█████████▏| 14757/15987 [01:10<00:06, 194.00it/s] 92%|█████████▏| 14777/15987 [01:10<00:06, 174.18it/s] 93%|█████████▎| 14801/15987 [01:10<00:06, 189.25it/s] 93%|█████████▎| 14821/15987 [01:10<00:06, 190.94it/s] 93%|█████████▎| 14844/15987 [01:10<00:05, 199.25it/s] 93%|█████████▎| 14866/15987 [01:10<00:05, 202.35it/s] 93%|█████████▎| 14888/15987 [01:10<00:05, 205.48it/s] 93%|█████████▎| 14909/15987 [01:11<00:05, 204.06it/s] 93%|█████████▎| 14932/15987 [01:11<00:05, 207.24it/s] 94%|█████████▎| 14954/15987 [01:11<00:04, 209.67it/s] 94%|█████████▎| 14978/15987 [01:11<00:04, 218.28it/s] 94%|█████████▍| 15000/15987 [01:11<00:04, 213.49it/s] 94%|█████████▍| 15027/15987 [01:11<00:04, 227.90it/s] 94%|█████████▍| 15050/15987 [01:11<00:04, 207.68it/s] 94%|█████████▍| 15072/15987 [01:11<00:04, 202.82it/s] 94%|█████████▍| 15094/15987 [01:11<00:04, 206.32it/s] 95%|█████████▍| 15127/15987 [01:12<00:03, 237.30it/s] 95%|█████████▍| 15151/15987 [01:12<00:03, 226.36it/s] 95%|█████████▍| 15175/15987 [01:12<00:03, 227.28it/s] 95%|█████████▌| 15198/15987 [01:12<00:03, 213.93it/s] 95%|█████████▌| 15224/15987 [01:12<00:03, 224.90it/s] 95%|█████████▌| 15247/15987 [01:12<00:03, 221.50it/s] 96%|█████████▌| 15270/15987 [01:12<00:03, 213.46it/s] 96%|█████████▌| 15292/15987 [01:12<00:03, 212.10it/s] 96%|█████████▌| 15314/15987 [01:12<00:03, 207.19it/s] 96%|█████████▌| 15341/15987 [01:13<00:02, 223.94it/s] 96%|█████████▌| 15364/15987 [01:13<00:02, 218.27it/s] 96%|█████████▌| 15386/15987 [01:13<00:02, 209.99it/s] 96%|█████████▋| 15408/15987 [01:13<00:02, 203.29it/s] 97%|█████████▋| 15429/15987 [01:13<00:02, 193.46it/s] 97%|█████████▋| 15452/15987 [01:13<00:02, 201.69it/s] 97%|█████████▋| 15475/15987 [01:13<00:02, 208.48it/s] 97%|█████████▋| 15497/15987 [01:13<00:02, 206.77it/s] 97%|█████████▋| 15519/15987 [01:13<00:02, 206.06it/s] 97%|█████████▋| 15541/15987 [01:14<00:02, 207.43it/s] 97%|█████████▋| 15562/15987 [01:14<00:02, 204.36it/s] 98%|█████████▊| 15590/15987 [01:14<00:01, 225.34it/s] 98%|█████████▊| 15613/15987 [01:14<00:01, 214.40it/s] 98%|█████████▊| 15635/15987 [01:14<00:01, 196.30it/s] 98%|█████████▊| 15658/15987 [01:14<00:01, 205.30it/s] 98%|█████████▊| 15679/15987 [01:14<00:01, 190.12it/s] 98%|█████████▊| 15701/15987 [01:14<00:01, 197.98it/s] 98%|█████████▊| 15722/15987 [01:14<00:01, 200.01it/s] 98%|█████████▊| 15743/15987 [01:15<00:01, 183.03it/s] 99%|█████████▊| 15765/15987 [01:15<00:01, 191.98it/s] 99%|█████████▊| 15785/15987 [01:15<00:01, 187.37it/s] 99%|█████████▉| 15807/15987 [01:15<00:00, 195.51it/s] 99%|█████████▉| 15828/15987 [01:15<00:00, 198.82it/s] 99%|█████████▉| 15849/15987 [01:15<00:00, 188.01it/s] 99%|█████████▉| 15869/15987 [01:15<00:00, 191.08it/s] 99%|█████████▉| 15890/15987 [01:15<00:00, 196.15it/s]100%|█████████▉| 15912/15987 [01:15<00:00, 200.31it/s]100%|█████████▉| 15933/15987 [01:16<00:00, 201.89it/s]100%|█████████▉| 15954/15987 [01:16<00:00, 197.32it/s]100%|█████████▉| 15979/15987 [01:16<00:00, 211.90it/s]100%|██████████| 15987/15987 [01:16<00:00, 209.60it/s]
+2022-02-28 23:55:11,754 - INFO - Found 7 clusters
+2022-02-28 23:55:11,755 - INFO - 'Clustering' object has no attribute 'query'
+2022-02-28 23:55:11,758 - INFO - Total running time: 856:39
+
