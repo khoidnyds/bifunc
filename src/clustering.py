@@ -122,4 +122,4 @@ class Clustering():
         return out_path
 
 
-Clustering(Path("results/ILLUMINA_LANE_1/02-28--09-38-32/orfs.fa"), Path("results/ILLUMINA_LANE_1/02-28--09-38-32/aligned.tsv"), 20).cluster()
+# Clustering(Path("results/ILLUMINA_LANE_1/02-28--09-38-32/orfs.fa"), Path("results/ILLUMINA_LANE_1/02-28--09-38-32/aligned.tsv"), 20).cluster()

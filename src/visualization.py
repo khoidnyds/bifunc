@@ -6,8 +6,8 @@ import numpy as np
 
 
 class Visualization():
-    def __init__(self, query, clusters, annotation):
-        self.annontation = annotation
+    def __init__(self, query, clusters, annontation):
+        self.annontation = annontation
         self.query = query
         self.clusters = clusters
 
@@ -59,3 +59,5 @@ class Visualization():
             plt.savefig(out_path.joinpath(
                 f"cluster_{cluster_idx}.png"), bbox_inches='tight')
             plt.close()
+
+

@@ -25,9 +25,9 @@ class Preprocess():
 
         pairs_1 = []
         pairs_2 = []
-        count=0
+        count = 0
         for pair in pairs:
-            if count==2:
+            if count == 2:
                 break
             out_f_1 = self.output.joinpath(
                 Path(f"fastp_{pair[0].name}"))
@@ -48,7 +48,7 @@ class Preprocess():
 
             pairs_1.append(str(out_f_1))
             pairs_2.append(str(out_f_2))
-            count+=1
+            count += 1
         subprocess.run(["megahit", "-1", ",".join(pairs_1), "-2",
                         ",".join(pairs_2), "--presets", "meta-large", "-o", str(self.output.joinpath("megahit"))])
 

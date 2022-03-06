@@ -43,7 +43,7 @@ class Bifunc():
             orf = OrfFinder(query).orf_finder()
             aligned = Alignment(orf, self.database, self.subject_cover).align()
             clusters = Clustering(orf, aligned, self.distance).cluster()
-            Visualization(orf, clusters).generate_graph()
+            Visualization(orf, clusters, self.annotation).generate_graph()
         except Exception as e:
             logging.info(e)
 

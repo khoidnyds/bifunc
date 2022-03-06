@@ -4,6 +4,7 @@
 /database
 /test
 /visual
+/cov
 .vscode
 .ipynb_checkpoints
 __pycache__
