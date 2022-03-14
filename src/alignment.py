@@ -31,5 +31,5 @@ class Alignment():
         return out_path
 
 
-Alignment(Path("results/ILLUMINA_LANE_1/02-28--09-38-32/orfs.fa"),
-          Path("database/CARD/broadstreet/protein_fasta_protein_homolog_model.fasta"), 70).align()
+# Alignment(Path("results/ILLUMINA_LANE_1/02-28--09-38-32/orfs.fa"),
+#           Path("database/CARD/broadstreet/protein_fasta_protein_homolog_model.fasta"), 70).align()
