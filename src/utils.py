@@ -1,5 +1,7 @@
+from subprocess import Popen, PIPE
 from Bio import SeqIO
 import csv
+import logging
 
 
 def read_fastq_length(filename: str):
@@ -27,3 +29,20 @@ def write_dict_to_file(filename, results: dict):
     for key, value in results.items():
         writer.writerow([key, value])
     my_file.close()
+
+
+def run_subprocess(cmd: str, get_stdout=False):
+    if get_stdout:
+        p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        out, err = p.communicate()
+        out = out.decode().strip()
+        err = err.decode().strip()
+        if out != "":
+            return out
+        elif err != "":
+            return err
+        else:
+            return ""
+    else:
+        p = Popen(cmd, shell=True)
+        p.wait()

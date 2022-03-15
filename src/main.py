@@ -9,7 +9,6 @@ from datetime import datetime
 from visualization import Visualization
 from orf import OrfFinder
 import time
-from pyfaidx import Fasta
 from preprocessing import Preprocess
 
 
@@ -25,9 +24,11 @@ class Bifunc():
         self.annotation = annotation
         self.subject_cover = subject_cover
 
+        today = datetime.today().strftime("%m-%d--%H-%M-%S")
+        today = "03-14--19-18-25"
         self.out_dir = Path("results")\
             .joinpath(self.input.stem)\
-            .joinpath(datetime.today().strftime("%m-%d--%H-%M-%S"))
+            .joinpath(today)
         Path.mkdir(self.out_dir, parents=True, exist_ok=True)
 
         start = time.time()
