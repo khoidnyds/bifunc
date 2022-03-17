@@ -10,6 +10,8 @@ from visualization import Visualization
 from orf import OrfFinder
 import time
 from preprocessing import Preprocess
+from datetime import timedelta
+from coverage import CoveragePlot
 
 
 class Bifunc():
@@ -25,7 +27,6 @@ class Bifunc():
         self.subject_cover = subject_cover
 
         today = datetime.today().strftime("%m-%d--%H-%M-%S")
-        today = "03-14--19-18-25"
         self.out_dir = Path("results")\
             .joinpath(self.input.stem)\
             .joinpath(today)
@@ -36,7 +37,7 @@ class Bifunc():
 
         running_time = time.time() - start
         logging.info(
-            f"Total running time: {int(running_time//60)}:{int(running_time%60):0>2d}\n")
+            f"Total running time: {str(timedelta(seconds=running_time))}\n")
 
     def pipeline(self):
         try:
@@ -44,7 +45,9 @@ class Bifunc():
             orf = OrfFinder(query).orf_finder()
             aligned = Alignment(orf, self.database, self.subject_cover).align()
             clusters = Clustering(orf, aligned, self.distance).cluster()
-            Visualization(orf, clusters, self.annotation).generate_graph()
+            contigs_ls = Visualization(
+                orf, clusters, self.annotation).generate_graph()
+            CoveragePlot(self.input, contigs_ls, query).plot()
         except Exception as e:
             logging.info(e)
 

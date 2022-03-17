@@ -13,6 +13,8 @@ class Clustering():
         self.distance = distance
 
     def cluster(self):
+        out_path = self.query_path.parent.joinpath("clusters.csv")
+
         labels = ["Query accession", "Target accession", "Sequence identity", "Length", "Mismatches",
                   "Gap openings", "Query start", "Query end", "Target start", "Target end", "E-value", "Bit score"]
         query = Fasta(str(self.query_path))
@@ -120,4 +122,3 @@ class Clustering():
         out_path = self.query_path.parent.joinpath("clusters.csv")
         results.to_csv(out_path, index=False)
         return out_path
-

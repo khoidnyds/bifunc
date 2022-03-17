@@ -11,7 +11,7 @@ class Alignment():
         self.database = database
 
     def align(self):
-        out_path = self.query.parent.joinpath("aligned.sam")
+        out_path = self.query.parent.joinpath("aligned.tsv")
 
         database_built_path = Path("database").joinpath(
             "built").joinpath(self.database.stem)
@@ -20,7 +20,7 @@ class Alignment():
                 ["diamond", "makedb", "--in", self.database, "-d", database_built_path])
         logging.info(f"Run the DIAMOND alignment")
         subprocess.run(
-            ["diamond", "blastx", "--db", database_built_path, "--query", self.query, "--verbose", "--sensitive", "--subject-cover", self.subject_cover, "-o", out_path, "--outfmt", "101"])
+            ["diamond", "blastx", "--db", database_built_path, "--query", self.query, "--verbose", "--sensitive", "--subject-cover", self.subject_cover, "-o", out_path])
 
         try:
             count = len(pd.read_csv(out_path, sep='\t',  comment='@'))
@@ -29,7 +29,3 @@ class Alignment():
             raise Exception("No aligned sequences")
 
         return out_path
-
-
-# Alignment(Path("results/ILLUMINA_LANE_1/02-28--09-38-32/orfs.fa"),
-#           Path("database/CARD/broadstreet/protein_fasta_protein_homolog_model.fasta"), 70).align()

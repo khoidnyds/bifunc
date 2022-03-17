@@ -12,9 +12,10 @@ class Preprocess():
 
     def execute(self):
         reference = 'database/merged_ref_5081444234059102403.fa.gz'
+        out_path = self.output.joinpath("megahit").joinpath("final.contigs.fa")
 
         logging.info(
-            f"Run the QC steps: remove adapters and low-quality reads")
+            f"Run the QC steps: remove adapters, low-quality and contaminated reads")
 
         files = sorted([x for x in self.input_dir.glob(
             '*') if x.is_file() and ".fastq" in x.suffixes])
@@ -27,12 +28,7 @@ class Preprocess():
         pairs_1 = []
         pairs_2 = []
 
-        count = 0
         for pair in pairs:
-            if count == 2:
-                break
-            count += 1
-
             out_f_1 = self.output.joinpath(
                 Path(f"fastp_{pair[0].name}"))
             out_f_2 = self.output.joinpath(
@@ -51,9 +47,9 @@ class Preprocess():
 
             # fastp: remove adapter and read with quality score < 10
             logging.info(f"Preprocessing {pair[0]} and {pair[1]}")
-            fastp_command = f"fastp -i {pair[0]} -I {pair[1]} -o {out_f_1} -O {out_f_2} -h {out_f_html} -j {out_j_html} --average_qual 10"
+            fastp_command = f"fastp -i {pair[0]} -I {pair[1]} -o {out_f_1} -O {out_f_2} -h {out_f_html} -j {out_j_html} --detect_adapter_for_pe --trim_poly_g --trim_poly_x --low_complexity_filter --average_qual 10"
             # bbduk
-            bbduk_trim_adapters_command = f"bbduk.sh ref={reference} in={out_f_1} in2={out_f_2} out={out_b_at_1} out2={out_b_at_2} -Xmx500g ktrim=r stats={out_b_at}"
+            bbduk_trim_adapters_command = f"bbduk.sh ref={reference} in={out_f_1} in2={out_f_2} out={out_b_at_1} out2={out_b_at_2} -Xmx500g ktrim=r preallocate=t minlength=51 stats={out_b_at}"
 
             run_subprocess(fastp_command)
             run_subprocess(bbduk_trim_adapters_command)
@@ -65,6 +61,6 @@ class Preprocess():
                         ",".join(pairs_2), "--presets", "meta-large", "-o", str(self.output.joinpath("megahit"))])
 
         out_path = self.output.joinpath("megahit").joinpath("final.contigs.fa")
-        count = len(Fasta(str(out_path)))
+        count = len(Fasta(str(out_path)).keys())
         logging.info(f"Found {count} contigs")
         return out_path

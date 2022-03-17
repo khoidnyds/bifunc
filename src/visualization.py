@@ -22,14 +22,21 @@ class Visualization():
         logging.info(
             f"Drawing {df['Cluster'].iloc[-1]} clusters")
 
-        out_path = self.query.parent.joinpath("viz")
+        out_path = self.query.parent.joinpath("viz_clusters")
         Path.mkdir(out_path, parents=True, exist_ok=True)
 
+        contig_ls = []
         for cluster_idx, cluster in df.groupby("Cluster"):
             length = cluster['Length'].iloc[0]
             plt.figure(figsize=(5, len(cluster)))
             plt.xlim(0, length)
             plt.axline((0, 0), (length, 0), c='r', linewidth=4)
+
+            contig = cluster["Query accession"].iloc[0].split("_")[:-1]
+            contig.append("split")
+            contig.append("00001")
+            contig_ls.append("_".join(contig))
+
             plt.title(
                 f"{cluster['Query accession'].iloc[0]} - Length:{length}")
             locs, labels = [], []
@@ -59,5 +66,4 @@ class Visualization():
             plt.savefig(out_path.joinpath(
                 f"cluster_{cluster_idx}.png"), bbox_inches='tight')
             plt.close()
-
-
+        return contig_ls
