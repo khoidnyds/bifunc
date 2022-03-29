@@ -11,7 +11,7 @@ from orf import OrfFinder
 import time
 from preprocessing import Preprocess
 from datetime import timedelta
-from coverage import CoveragePlot
+from coverage import Coverage
 
 
 class Bifunc():
@@ -27,6 +27,7 @@ class Bifunc():
         self.subject_cover = subject_cover
 
         today = datetime.today().strftime("%m-%d--%H-%M-%S")
+        today = "03-14--19-18-25"
         self.out_dir = Path("results")\
             .joinpath(self.input.stem)\
             .joinpath(today)
@@ -45,9 +46,9 @@ class Bifunc():
             orf = OrfFinder(query).orf_finder()
             aligned = Alignment(orf, self.database, self.subject_cover).align()
             clusters = Clustering(orf, aligned, self.distance).cluster()
-            contigs_ls = Visualization(
-                orf, clusters, self.annotation).generate_graph()
-            CoveragePlot(self.input, contigs_ls, query).plot()
+            coverage = Coverage(self.input, clusters, query).plot()
+            Visualization(
+                orf, clusters, self.annotation, coverage).generate_graph()
         except Exception as e:
             logging.info(e)
 

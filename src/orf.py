@@ -1,7 +1,7 @@
 import subprocess
 import logging
-from pyfaidx import Fasta
 from pathlib import Path
+from pyfaidx import Fasta
 
 
 class OrfFinder():
@@ -13,7 +13,7 @@ class OrfFinder():
 
         logging.info(f"Run the ORF finder")
         subprocess.run(
-            ["orfipy", self.query, "--dna", "orfs.fa", "--outdir", self.query.parent.parent])
+            ["orfipy", self.query, "--dna", "orfs.fa", "--outdir", self.query.parent.parent, "--min", "200"])
 
         count = len(Fasta(str(out_path)).keys())
         logging.info(f"Found {count} ORFs")

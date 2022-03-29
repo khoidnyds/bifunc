@@ -1,8 +1,5 @@
-# Detect bifunctional antibiotic resistance genes
+# Detecting bifunctional antibiotic resistance genes in metagenomics data
 ## Master thesis at Dr.Zhang's lab - Computer Science - Virginia Tech
-
-### Generate requirement packages:
-    conda env export > environment.yml
 
 ### Install requirement packages:
     conda env create -f environment.yml

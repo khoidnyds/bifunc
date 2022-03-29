@@ -51,14 +51,14 @@ class Preprocess():
             # bbduk
             bbduk_trim_adapters_command = f"bbduk.sh ref={reference} in={out_f_1} in2={out_f_2} out={out_b_at_1} out2={out_b_at_2} -Xmx500g ktrim=r preallocate=t minlength=51 stats={out_b_at}"
 
-            run_subprocess(fastp_command)
-            run_subprocess(bbduk_trim_adapters_command)
+            # run_subprocess(fastp_command)
+            # run_subprocess(bbduk_trim_adapters_command)
 
             pairs_1.append(str(out_b_at_1))
             pairs_2.append(str(out_b_at_2))
 
-        subprocess.run(["megahit", "-1", ",".join(pairs_1), "-2",
-                        ",".join(pairs_2), "--presets", "meta-large", "-o", str(self.output.joinpath("megahit"))])
+        # subprocess.run(["megahit", "-1", ",".join(pairs_1), "-2",
+        #                 ",".join(pairs_2), "--presets", "meta-large", "-o", str(self.output.joinpath("megahit"))])
 
         out_path = self.output.joinpath("megahit").joinpath("final.contigs.fa")
         count = len(Fasta(str(out_path)).keys())

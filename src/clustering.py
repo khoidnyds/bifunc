@@ -58,7 +58,7 @@ class Clustering():
                                                          seq[1]["Target accession"],
                                                          seq[1]["Target start"],
                                                          seq[1]["Target end"],
-                                                         seq[1]["Start"]-seq[1]["End"]]
+                                                         seq[1]["End"]-seq[1]["Start"]]
 
                     else:
                         start, end = seq[1]["Start"], seq[1]["End"]
@@ -84,7 +84,7 @@ class Clustering():
                                                              seq[1]["Target accession"],
                                                              seq[1]["Target start"],
                                                              seq[1]["Target end"],
-                                                             seq[1]["Start"]-seq[1]["End"]]
+                                                             seq[1]["End"]-seq[1]["Start"]]
                             continue
 
                         if start > (start_cluster+(end_cluster-start_cluster)*0.9):
@@ -98,7 +98,7 @@ class Clustering():
                                                              seq[1]["Target accession"],
                                                              seq[1]["Target start"],
                                                              seq[1]["Target end"],
-                                                             seq[1]["Start"]-seq[1]["End"]]
+                                                             seq[1]["End"]-seq[1]["Start"]]
                             start_cluster = start if start < start_cluster else start_cluster
                             end_cluster = end if end > end_cluster else end_cluster
 

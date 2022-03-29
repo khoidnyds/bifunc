@@ -1,13 +1,24 @@
 from pathlib import Path
 from utils import run_subprocess
-from pathlib import Path
+from pyfaidx import Fasta
+import pandas as pd
 
 
-class CoveragePlot():
-    def __init__(self, input_dir, contigs_ls, output):
+class Coverage():
+    def __init__(self, input_dir, clusters, output):
         self.input_dir = input_dir
         self.output = output
-        self.contigs_ls = contigs_ls
+        self.clusters = pd.read_csv(clusters)
+
+        def correct_name(x):
+            temp = x.split("_")[:2]
+            temp.append("split")
+            temp.append("00001")
+            temp = "_".join(temp)
+            return temp
+
+        self.clusters = list(
+            map(correct_name, set(self.clusters['Query accession'])))
 
     def plot(self):
         contigs_raw = self.output
@@ -23,11 +34,11 @@ class CoveragePlot():
         run_subprocess(
             f'reformat.sh in={contigs_raw} out={contigs_fa} trimreaddescription=t')
         run_subprocess(
-            f'anvi-gen-contigs-database -f {contigs_fa} -T 32 -o {contigs_db}')
+            f'anvi-gen-contigs-database -f {contigs_fa} -T 32 -o {contigs_db} -L 0')
 
         run_subprocess(f'anvi-run-hmms -T 32 -c {contigs_db} --just-do-it')
-        # run_subprocess(f'anvi-setup-ncbi-cogs -T 32')
-        # run_subprocess(f'anvi-run-ncbi-cogs -T 32 -c {contigs_db}')
+        run_subprocess(f'anvi-setup-ncbi-cogs -T 32')
+        run_subprocess(f'anvi-run-ncbi-cogs -T 32 -c {contigs_db}')
 
         files = sorted([x for x in self.input_dir.glob(
             '*') if x.is_file() and ".fastq" in x.suffixes])
@@ -62,11 +73,13 @@ class CoveragePlot():
         run_subprocess(
             f'anvi-get-split-coverages -p {profile_merged} -c {contigs_db} --list-splits')
 
-        for contig in self.contigs_ls:
+        for contig in self.clusters:
             cov_txt = plot_dir.joinpath(contig).with_suffix('.txt')
+            run_subprocess(
+                f'anvi-get-split-coverages -p {profile_merged} -c {contigs_db} --split-name {contig} -o {cov_txt}')
+
             cov_pdf = plot_dir.joinpath(
                 contig).with_suffix('').with_suffix('.pdf')
             run_subprocess(
-                f'anvi-get-split-coverages -p {profile_merged} -c {contigs_db} --split-name {contig} -o {cov_txt}')
-            run_subprocess(
                 f'anvi-script-visualize-split-coverages -i {cov_txt} -o {cov_pdf}')
+        return self.clusters
