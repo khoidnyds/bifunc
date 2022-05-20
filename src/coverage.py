@@ -21,6 +21,8 @@ class Coverage():
             map(correct_name, set(self.clusters['Query accession'])))
 
     def plot(self):
+        return self.clusters
+
         contigs_raw = self.output
         self.output = self.output.parent.parent
         contigs_fa = self.output.joinpath("contigs.fa")
@@ -36,9 +38,9 @@ class Coverage():
         run_subprocess(
             f'anvi-gen-contigs-database -f {contigs_fa} -T 32 -o {contigs_db} -L 0')
 
-        run_subprocess(f'anvi-run-hmms -T 32 -c {contigs_db} --just-do-it')
-        run_subprocess(f'anvi-setup-ncbi-cogs -T 32')
-        run_subprocess(f'anvi-run-ncbi-cogs -T 32 -c {contigs_db}')
+        # run_subprocess(f'anvi-run-hmms -T 32 -c {contigs_db} --just-do-it')
+        # run_subprocess(f'anvi-setup-ncbi-cogs -T 32')
+        # run_subprocess(f'anvi-run-ncbi-cogs -T 32 -c {contigs_db}')
 
         files = sorted([x for x in self.input_dir.glob(
             '*') if x.is_file() and ".fastq" in x.suffixes])

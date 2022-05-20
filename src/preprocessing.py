@@ -13,6 +13,7 @@ class Preprocess():
     def execute(self):
         reference = 'database/merged_ref_5081444234059102403.fa.gz'
         out_path = self.output.joinpath("megahit").joinpath("final.contigs.fa")
+        return out_path
 
         logging.info(
             f"Run the QC steps: remove adapters, low-quality and contaminated reads")

@@ -12,6 +12,7 @@ class Alignment():
 
     def align(self):
         out_path = self.query.parent.joinpath("aligned.tsv")
+        return out_path
 
         database_built_path = Path("database").joinpath(
             "built").joinpath(self.database.stem)

@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import numpy as np
 from pyfaidx import Fasta
@@ -14,6 +15,7 @@ class Clustering():
 
     def cluster(self):
         out_path = self.query_path.parent.joinpath("clusters.csv")
+        return out_path
 
         labels = ["Query accession", "Target accession", "Sequence identity", "Length", "Mismatches",
                   "Gap openings", "Query start", "Query end", "Target start", "Target end", "E-value", "Bit score"]
@@ -49,12 +51,15 @@ class Clustering():
                 for seq in group.iterrows():
                     if cluster.shape[0] == 0:
                         start_cluster, end_cluster = seq[1]["Start"], seq[1]["End"]
+                        long_name = query[seq[1]["Query accession"]].long_name
+                        res = re.findall(r'\[.*?\]', long_name)
+                        s = int(res[0][1:-1].split("-")[0])
                         cluster.loc[cluster.shape[0]] = [num_cluster,
                                                          seq[1]["Query accession"],
                                                          len(str(
                                                              query[seq[1]["Query accession"]])),
-                                                         seq[1]["Start"],
-                                                         seq[1]["End"],
+                                                         seq[1]["Start"]+s,
+                                                         seq[1]["End"]+s,
                                                          seq[1]["Target accession"],
                                                          seq[1]["Target start"],
                                                          seq[1]["Target end"],
@@ -75,12 +80,16 @@ class Clustering():
                                 num_cluster += 1
                             cluster = cluster.iloc[0:0]
                             start_cluster, end_cluster = seq[1]["Start"], seq[1]["End"]
+                            long_name = query[seq[1]
+                                              ["Query accession"]].long_name
+                            res = re.findall(r'\[.*?\]', long_name)
+                            s = int(res[0][1:-1].split("-")[0])
                             cluster.loc[cluster.shape[0]] = [num_cluster,
                                                              seq[1]["Query accession"],
                                                              len(str(
                                                                  query[seq[1]["Query accession"]])),
-                                                             seq[1]["Start"],
-                                                             seq[1]["End"],
+                                                             seq[1]["Start"]+s,
+                                                             seq[1]["End"]+s,
                                                              seq[1]["Target accession"],
                                                              seq[1]["Target start"],
                                                              seq[1]["Target end"],
@@ -89,12 +98,16 @@ class Clustering():
 
                         if start > (start_cluster+(end_cluster-start_cluster)*0.9):
                             # add seq to cluster and expand the range of cluster
+                            long_name = query[seq[1]
+                                              ["Query accession"]].long_name
+                            res = re.findall(r'\[.*?\]', long_name)
+                            s = int(res[0][1:-1].split("-")[0])
                             cluster.loc[cluster.shape[0]] = [num_cluster,
                                                              seq[1]["Query accession"],
                                                              len(str(
                                                                  query[seq[1]["Query accession"]])),
-                                                             seq[1]["Start"],
-                                                             seq[1]["End"],
+                                                             seq[1]["Start"]+s,
+                                                             seq[1]["End"]+s,
                                                              seq[1]["Target accession"],
                                                              seq[1]["Target start"],
                                                              seq[1]["Target end"],
@@ -119,6 +132,5 @@ class Clustering():
         logging.info(
             f"Found {results['Cluster'].iloc[-1]} clusters")
 
-        out_path = self.query_path.parent.joinpath("clusters.csv")
         results.to_csv(out_path, index=False)
         return out_path

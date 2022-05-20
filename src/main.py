@@ -19,11 +19,12 @@ class Bifunc():
     Main class: take the input directory and run the pipeline
     """
 
-    def __init__(self, input_dir, database, annotation, subject_cover, distance):
+    def __init__(self, input_dir, database, annotation, description, subject_cover, distance):
         self.input = Path(input_dir)
         self.database = Path(database)
         self.distance = distance
         self.annotation = annotation
+        self.description = description
         self.subject_cover = subject_cover
 
         today = datetime.today().strftime("%m-%d--%H-%M-%S")
@@ -48,7 +49,7 @@ class Bifunc():
             clusters = Clustering(orf, aligned, self.distance).cluster()
             coverage = Coverage(self.input, clusters, query).plot()
             Visualization(
-                orf, clusters, self.annotation, coverage).generate_graph()
+                orf, clusters, self.annotation, self.description, coverage).generate_graph()
         except Exception as e:
             logging.info(e)
 
@@ -71,7 +72,11 @@ def arg_parse():
                         type=str,
                         default="database/CARD/broadstreet/aro_categories_index.tsv",
                         help='path to annotation file (default: %(default)s)')
-    parser.add_argument('-sc', '--subjectcover',
+    parser.add_argument('-e', '--description',
+                        type=str,
+                        default="database/CARD/ontology/aro.tsv",
+                        help='path to description file (default: %(default)s)')
+    parser.add_argument('-u', '--subjectcover',
                         type=str,
                         default=70,
                         help='subject cover parameter for alginer (default: %(default)s)')
@@ -102,6 +107,7 @@ def main(args):
     logging.info(f"Query file: {args.input}")
     logging.info(f"Database file: {args.database}")
     logging.info(f"Annotation file: {args.annotation}")
+    logging.info(f"Description file: {args.description}")
     logging.info(f"Subject cover: {args.subjectcover}")
     logging.info(f"Distance: {args.distance}")
     logging.info(
@@ -115,7 +121,7 @@ def main(args):
     Path.mkdir(outfile, parents=True, exist_ok=True)
 
     Bifunc(args.input, args.database, args.annotation,
-           args.subjectcover, args.distance)
+           args.description, args.subjectcover, args.distance)
     ###################################################################
 
 

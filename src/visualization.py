@@ -11,11 +11,12 @@ from textwrap import wrap
 
 
 class Visualization():
-    def __init__(self, query, clusters, annontation, coverage):
-        self.annontation = annontation
+    def __init__(self, query, clusters, annotation, description, coverage):
+        self.annotation = annotation
         self.query = query
         self.clusters = clusters
         self.coverage = coverage
+        self.description = description
 
     def get_window_size(self, sample_size):
         # This size was chosen because it reduces the size, but still
@@ -27,9 +28,8 @@ class Visualization():
         return window_size
 
     def generate_graph(self):
-        name = None
-        if not self.annontation is None:
-            name = pd.read_csv(self.annontation, sep="\t").fillna(np.NaN)
+        name = pd.read_csv(self.annotation, sep="\t").fillna(np.NaN)
+        description = pd.read_csv(self.description, sep="\t").fillna(np.NaN)
 
         df = pd.read_csv(self.clusters)
         if df.empty:
@@ -40,6 +40,13 @@ class Visualization():
         out_path = self.query.parent.joinpath("viz_clusters")
         Path.mkdir(out_path, parents=True, exist_ok=True)
         orfs = Fasta(str(self.query))
+
+        results_query = []
+        results_gene1 = []
+        results_gene2 = []
+        results_ks_values = []
+        results_ks_pvalues = []
+        sequence = []
 
         for _, cluster in df.groupby("Cluster"):
             plt.figure(figsize=(5, len(cluster)))
@@ -53,7 +60,8 @@ class Visualization():
             contig_key.append("split")
             contig_key.append("00001")
             contig_key = "_".join(contig_key)
-
+            if contig_key == "k127_22319_split_00001":
+                a = 1
             length = cluster['Length'].iloc[0]
 
             # draw coverage
@@ -76,19 +84,28 @@ class Visualization():
             # draw clusters
             y_max = np.max(cov['smooth_cov'][pos_start:pos_end].values)
             for i in range(len(cluster)):
-                y = (i + 1)*y_max/(len(cluster)*2)
+                # y = (i + 1)*y_max/(len(cluster)*2)
                 target_start = cluster["Target start"].iloc[i]
                 target_end = cluster["Target end"].iloc[i]
-                x_start = cluster["Query start"].iloc[i]+pos_start
-                x_end = cluster["Query end"].iloc[i]+pos_start
+                x_start = cluster["Query start"].iloc[i]
+                x_end = cluster["Query end"].iloc[i]
 
                 raw_label = cluster['Target accession'].iloc[i]
+                accession = raw_label.split("|")[2]
                 drug_class = name[name['Protein Accession'] == raw_label.split(
                     '|')[1]]['Drug Class'].values[0]
+                desc = description[description['Accession']
+                                   == accession]['Description'].values[0]
                 if drug_class is np.NaN:
                     arg_name = "N/A"
                 else:
                     arg_name = drug_class.replace(" antibiotic", "")
+                cluster["Description"] = ""
+
+                current_row = df.loc[(df['Target accession'] == raw_label) & (
+                    df['Query accession'] == cluster["Query accession"].iloc[i])]
+                df.loc[current_row.index, 'Description'] = desc
+
                 label = raw_label.split("|")[-2:]
                 label.append(arg_name)
                 label = " ".join(label)
@@ -97,7 +114,8 @@ class Visualization():
                 label_wrap = f"Query location: {x_start} {x_end}\n"+label_wrap
                 # labels.append(
                 #     f"Target location: {target_start} {target_end}\nQuery location: {x_start} {x_end}\n{label_wrap}")
-                plt.plot((x_start, x_end), (y, y), label=label_wrap)
+                plt.plot((x_start, x_end), (0, 0),
+                         label=label_wrap, linewidth=4, alpha=0.5)
 
                 ks_data.append(cov[int(cluster["Query start"].iloc[i]) -
                                1:int(cluster["Query end"].iloc[i])-1]['smooth_cov'].values)
@@ -111,14 +129,33 @@ class Visualization():
                      label="Coverage")
 
             ks_test = stats.ks_2samp(ks_data[0], ks_data[1])
-            plt.xlim(pos_start-10, pos_end+10)
-            plt.axline((0, 0), (length, 0), c='r', linewidth=4)
+            plt.xlim(pos_start-20, pos_end+20)
+            # plt.axline((0, 0), (length, 0), c='r', linewidth=4)
             mean_cov = np.mean(np.concatenate((ks_data[0], ks_data[1])))
+
             plt.title(
-                f"{cluster['Query accession'].iloc[0]} | Length:{length} | Mean coverage:{mean_cov:.2f} | Kolmogorov-Smirnov test: value:{ks_test.statistic:.2f}, p-value:{ks_test.pvalue:.1E}")
+                f"{cluster['Query accession'].iloc[0]} | Length:{length}")
             plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
             plt.xlabel("Query sequence")
             plt.ylabel("# of mapped read")
             plt.savefig(out_path.joinpath(
                 contig_name+".png"), bbox_inches='tight')
             plt.close()
+
+            results_query.append(contig_name)
+            results_gene1.append(cluster['Target accession'].iloc[0])
+            results_gene2.append(cluster['Target accession'].iloc[1])
+            results_ks_values.append(ks_test.statistic)
+            results_ks_pvalues.append(ks_test.pvalue)
+            sequence.append(str(orfs[contig_name]))
+
+        results = pd.DataFrame.from_dict({
+            "Query accession": results_query,
+            "Gene 1": results_gene1,
+            "Gene 2": results_gene2,
+            "Sequence": sequence
+        })
+        results.to_csv(out_path.parent.joinpath(
+            "results.csv"), index=False)
+        df.to_csv(out_path.parent.joinpath(
+            "clusters_new.csv"), index=False)

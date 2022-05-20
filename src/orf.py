@@ -10,6 +10,7 @@ class OrfFinder():
 
     def orf_finder(self):
         out_path = self.query.parent.parent.joinpath(Path("orfs.fa"))
+        return out_path
 
         logging.info(f"Run the ORF finder")
         subprocess.run(
